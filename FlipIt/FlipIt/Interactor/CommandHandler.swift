@@ -47,7 +47,7 @@ class CommandHandler {
             if randomNumber != possibleMotions.pressVolume.rawValue {
                 MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
             }
-            if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber) || keptHandOnScreen() || randomNumber == 3 {
+            if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
 				if randomNumber == possibleMotions.coverScreen.rawValue  && MotionHandler.sharedInstance.detector == false  {
 					print("wrong")
 					PresenterViewController.sharedInstance.speak(text: "You lost. Hahahahaha!")
@@ -101,9 +101,6 @@ class CommandHandler {
         numberOfCommandsGiven += 1
     }
     
-    private func keptHandOnScreen () -> Bool{
-         return randomNumber == 4 && MotionHandler.sharedInstance.motionsPerformed.isEmpty
-    }
     private func generateRandomNumber(max: Int) -> Int {
         let generatedNumber = Int (arc4random_uniform(UInt32(max)))
         return generatedNumber
