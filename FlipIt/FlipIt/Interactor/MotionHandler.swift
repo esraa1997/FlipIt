@@ -31,7 +31,7 @@ class MotionHandler: UIViewController {
     var originalVolume:Float = 0
     
     //MARK:- Public Functions
-    func startDetection(updateInterval:Double , proximitySensorEnabled:Bool ,observer:UIViewController) {
+    func startDetection(updateInterval:Double , proximitySensorEnabled:Bool) {
         detectMotion(updateInterval: updateInterval)
         detectProximity(proximitySensorEnabled)
         
@@ -39,7 +39,7 @@ class MotionHandler: UIViewController {
         let audioSession = AVAudioSession.sharedInstance()
         originalVolume = audioSession.outputVolume
         //TODO: make volume = original volume at the end
-        audioSession.addObserver (observer, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        audioSession.addObserver (self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
         do { try audioSession.setActive(true) }
         catch { print("\(error)") }
     }
@@ -99,6 +99,18 @@ class MotionHandler: UIViewController {
     }
     
     //s
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let key = keyPath else { return }
+        switch key {
+        case "outputVolume":
+            guard let dict = change, let temp = dict[NSKeyValueChangeKey.newKey] as? Float, temp != 0.5 else { return }
+            // set the volume to half point
+            PresenterViewController.sharedInstance.manageSliderView()
+            MotionHandler.sharedInstance.motionsPerformed.append(possibleMotions.pressVolume.rawValue)
+        default:
+            break
+        }
+    }
     
     //e
 }

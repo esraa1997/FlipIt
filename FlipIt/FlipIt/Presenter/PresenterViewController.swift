@@ -23,7 +23,7 @@ class PresenterViewController: UIViewController {
     @IBAction func start(_ sender: Any) {
         start.isHidden = true
 //        MotionHandler.sharedInstance.startDetecting(updateInterval: 0.02, proximitySensorEnabled: true)
-        MotionHandler.sharedInstance.startDetection(updateInterval: 0.02, proximitySensorEnabled: true, observer: self)
+        MotionHandler.sharedInstance.startDetection(updateInterval: 0.02, proximitySensorEnabled: true)
 		countdownLabelTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     @IBAction func myScores(_ sender: Any) {
@@ -81,18 +81,6 @@ class PresenterViewController: UIViewController {
             countdownLabelTimer.invalidate()
             countDownLabel.text = ""
             CommandHandler.sharedInstance.updateCommandTimer()
-        }
-    }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard let key = keyPath else { return }
-        switch key {
-        case "outputVolume":
-            guard let dict = change, let temp = dict[NSKeyValueChangeKey.newKey] as? Float, temp != 0.5 else { return }
-            // set the volume to half point
-            PresenterViewController.sharedInstance.manageSliderView()
-            MotionHandler.sharedInstance.motionsPerformed.append(possibleMotions.pressVolume.rawValue)
-        default:
-            break
         }
     }
     
