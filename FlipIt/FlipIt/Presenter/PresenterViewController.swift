@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 import AVFoundation
+import MediaPlayer
 
 class PresenterViewController: UIViewController {
     
@@ -22,7 +23,7 @@ class PresenterViewController: UIViewController {
     @IBAction func start(_ sender: Any) {
         start.isHidden = true
 //        MotionHandler.sharedInstance.startDetecting(updateInterval: 0.02, proximitySensorEnabled: true)
-		MotionHandler.sharedInstance.startDetectingMotion(updateInterval: 0.02)
+        MotionHandler.sharedInstance.startDetection(updateInterval: 0.02, proximitySensorEnabled: true, observer: self)
 		countdownLabelTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     @IBAction func myScores(_ sender: Any) {
@@ -63,7 +64,7 @@ class PresenterViewController: UIViewController {
     func speak (text: String) {
         let mySynthesizer = AVSpeechSynthesizer()
         let myUtterence = AVSpeechUtterance(string:text)
-        myUtterence.rate = 0.57
+        myUtterence.rate = 0.3
         myUtterence.voice = AVSpeechSynthesisVoice(language: "en-au")
         myUtterence.pitchMultiplier = 1.0 //between 0.5 and 2.0. Default is 1.0.
         mySynthesizer.speak(myUtterence)
@@ -82,10 +83,31 @@ class PresenterViewController: UIViewController {
             CommandHandler.sharedInstance.updateCommandTimer()
         }
     }
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let key = keyPath else { return }
+        switch key {
+        case "outputVolume":
+            guard let dict = change, let temp = dict[NSKeyValueChangeKey.newKey] as? Float, temp != 0.5 else { return }
+            // set the volume to half point
+            PresenterViewController.sharedInstance.manageSliderView()
+            MotionHandler.sharedInstance.motionsPerformed.append(possibleMotions.pressVolume.rawValue)
+        default:
+            break
+        }
+    }
+    
+    func manageSliderView() {
+        let systemSlider = MPVolumeView().subviews.first { (aView) -> Bool in
+            return NSStringFromClass(aView.classForCoder) == "MPVolumeSlider" ? true : false
+            } as? UISlider
+        systemSlider?.setValue(0.5, animated: false)
+        systemSlider?.isHidden = true
+        guard systemSlider != nil else { return }
+    }
 //    func gameOver(score: Int) {
 //        countDownLabel.text = "Your score is: " + String(score)
 //    }
 }
 
-//TODO:
+//TODO: with volume, use contains
 //score

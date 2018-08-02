@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreMotion
+import AVFoundation
 
 class MotionHandler: UIViewController {
     //MARK:- Variables
@@ -23,13 +24,24 @@ class MotionHandler: UIViewController {
     var action: String {
         return possibleMotion!.action
     }
-    var numberOfPossibleMotions = 5 //TODO: change it as Sandra adds her stuff
+    var numberOfPossibleMotions = 7 //TODO: change it as Sandra adds her stuff
     var motionsPerformed = [Int]()
     
+    let audioSession = AVAudioSession.sharedInstance()
+    var originalVolume:Float = 0
+    
     //MARK:- Public Functions
-    func startDetecting(updateInterval:Double , proximitySensorEnabled:Bool) {
-        startDetectingRotation(updateInterval: updateInterval)
-        startDetectingProximity(proximitySensorEnabled)
+    func startDetection(updateInterval:Double , proximitySensorEnabled:Bool ,observer:UIViewController) {
+        detectMotion(updateInterval: updateInterval)
+        detectProximity(proximitySensorEnabled)
+        
+        //Volume Control
+        let audioSession = AVAudioSession.sharedInstance()
+        originalVolume = audioSession.outputVolume
+        //TODO: make volume = original volume at the end
+        audioSession.addObserver (observer, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        do { try audioSession.setActive(true) }
+        catch { print("\(error)") }
     }
     func getDetectionResults () {
        // didDetect()
@@ -40,55 +52,37 @@ class MotionHandler: UIViewController {
     }
     
     //MARK:- Private Functions
-    private func startDetectingRotation(updateInterval:Double)  {
-        motionManager = CMMotionManager()
-        if motionManager.isDeviceMotionAvailable == true {
-            motionManager.deviceMotionUpdateInterval = updateInterval;
-            motionManager.startDeviceMotionUpdates(to: queue, withHandler: { [weak self] (data, error) -> Void in
-                if let attitude = data?.attitude {
-                    self?.pitches.append(attitude.pitch * 180.0/Double.pi)
-                    self?.rolls.append(attitude.roll * 180.0/Double.pi)
-                }
-            })
-            //TODO: play sound that plays when I start
-        }
-        else {
-            print("motion sensors aren't available")
-        }
-    }
     
-	func startDetectingMotion(updateInterval:Double) {
+	private func detectMotion(updateInterval:Double) {
 		let queue = OperationQueue()
-		startDetectingProximity(true)
+		detectProximity(true)
 		motionManager.startAccelerometerUpdates(to: queue) { (accelerometerData, error) in
 			if let data = accelerometerData {
 				if data.acceleration.x < -0.8 && data.acceleration.x > -1.2 {
-					self.motionsPerformed.append(possibleMotions.tiltedToTheLeft.rawValue)
-					print("turn left")
+					self.motionsPerformed.append(possibleMotions.faceLeft.rawValue)
+                    print("left")
 				}
 				if data.acceleration.x > 0.8 && data.acceleration.x < 1.2 {
-					self.motionsPerformed.append(possibleMotions.tiltedToTheRight.rawValue)
-					print("turn right")
+					self.motionsPerformed.append(possibleMotions.faceRight.rawValue)
+                    print("right")
 				}
 				if data.acceleration.z < -0.8 && data.acceleration.z > -1.2 {
-					self.motionsPerformed.append(possibleMotions.up.rawValue)
-					print("Up")
+					self.motionsPerformed.append(possibleMotions.faceUp.rawValue)
+                    print("Up")
 				}
 				if data.acceleration.z > 0.8 && data.acceleration.z < 1.2 {
-					self.motionsPerformed.append(possibleMotions.down.rawValue)
-					print("Down")
+					self.motionsPerformed.append(possibleMotions.faceDown.rawValue)
+                    print("Down")
 				}
 				if data.acceleration.y < -0.8 && data.acceleration.y > -1.2 {
-					self.motionsPerformed.append(possibleMotions.tiltedTowardsFace.rawValue)
-					print("Face")
+					self.motionsPerformed.append(possibleMotions.turnTowardsFace.rawValue)
+                    print("Face")
 				}
 			}
-			
-			
 		}
 	}
     
-    private func startDetectingProximity(_ enabled: Bool) {
+    private func detectProximity(_ enabled: Bool) {
         let device = UIDevice.current
         device.isProximityMonitoringEnabled = enabled
         if device.isProximityMonitoringEnabled {
@@ -99,36 +93,14 @@ class MotionHandler: UIViewController {
         }
     }
     
-//    private func didDetect()  {
-//        if pitches.first == nil {
-//            print ("pitches.first == nil")
-//        }
-//        if pitches.last == nil {
-//            print ("pitches.last == nil")
-//        }
-//        let pitchDiffrence = pitches.first! - pitches.last!
-//        let rollDiffrence = rolls.first! - rolls.last!
-//
-//        if pitchDiffrence > 3 {
-//            motionsPerformed.append(possibleMotions.tiltedAwayFromFace.rawValue)
-//        }
-//        if pitchDiffrence < -3  {
-//            motionsPerformed.append(possibleMotions.tiltedTowardsFace.rawValue)
-//        }
-//        if rollDiffrence > 3 {
-//            motionsPerformed.append(possibleMotions.tiltedToTheLeft.rawValue)
-//        }
-//         if rollDiffrence < -3  {
-//            motionsPerformed.append(possibleMotions.tiltedToTheRight.rawValue)
-//        }
-//
-//        pitches.removeAll()
-//        rolls.removeAll()
-//    }
-//
+
     @objc private func proximityChanged() {
-        motionsPerformed.append(possibleMotions.touchedScreen.rawValue)
+        motionsPerformed.append(possibleMotions.coverScreen.rawValue)
     }
+    
+    //s
+    
+    //e
 }
 
 

@@ -25,7 +25,6 @@ class CommandHandler {
     
     var level = 1
     
-    var motions = [0,0,0,0,0]
     //MaARK:- Public Functions
     func speedManager(multiplier: Double)  {
         timeInterval *= multiplier
@@ -44,6 +43,10 @@ class CommandHandler {
         MotionHandler.sharedInstance.getDetectionResults()
 
         if numberOfCommandsGiven > 0 {
+            print("randomnumber: \(randomNumber), last: \(MotionHandler.sharedInstance.motionsPerformed.last)")
+            if randomNumber != possibleMotions.pressVolume.rawValue {
+                MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
+            }
             if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber) || keptHandOnScreen() {
                 score += scoreIncrement
                 print(score)
@@ -84,33 +87,9 @@ class CommandHandler {
     }
     private func generateRandomNumber(max: Int) -> Int {
         let generatedNumber = Int (arc4random_uniform(UInt32(max)))
-        preventMultiples(number: generatedNumber, max: max)
-        motions[generatedNumber] += 1
-        updateMotions(number: generatedNumber)
         return generatedNumber
     }
     
-    private func preventMultiples(number: Int, max:Int) {
-            if motions[number] > 1 {
-                generateRandomNumber(max: max)
-                }
-            }
-    private func updateMotions(number: Int) {
-        switch number {
-        case 0 :
-            motions[1] = 0
-        case 1:
-            motions[0] = 0
-        case 2:
-            motions[0] = 0
-            motions[1] = 0
-            motions[3] = 0
-        case 3:
-            motions[0] = 0
-            motions[1] = 0
-            motions[2] = 0
-        default:
-            return
-        }
-    }
+
+
 }
