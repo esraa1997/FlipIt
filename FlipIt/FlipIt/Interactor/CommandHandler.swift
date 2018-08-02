@@ -43,7 +43,6 @@ class CommandHandler {
         MotionHandler.sharedInstance.getDetectionResults()
 
         if numberOfCommandsGiven > 0 {
-            print("randomnumber: \(randomNumber), last: \(MotionHandler.sharedInstance.motionsPerformed.last)")
             if randomNumber != possibleMotions.pressVolume.rawValue {
                 MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
             }

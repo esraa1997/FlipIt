@@ -14,15 +14,17 @@ import MediaPlayer
 class PresenterViewController: UIViewController {
     
     //MARK:- IBOutlets
-    @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var start: UIButton!
     @IBOutlet weak var myScores: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
-    //MARK:- IBActiona
+    //MARK:- IBActions
     @IBAction func start(_ sender: Any) {
         start.isHidden = true
-//        MotionHandler.sharedInstance.startDetecting(updateInterval: 0.02, proximitySensorEnabled: true)
+        titleLabel.isHidden = true
+        myScores.isHidden = true
+        
         MotionHandler.sharedInstance.startDetection(updateInterval: 0.02, proximitySensorEnabled: true)
 		countdownLabelTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
@@ -38,16 +40,17 @@ class PresenterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         //Start button:
-        start.frame = CGRect(x: view.frame.midX - view.frame.width * 0.213, y: view.frame.midY , width: view.frame.width * 0.387, height: view.frame.width * 0.387)
+        start.frame = CGRect(x: view.frame.midX - view.frame.width * 0.25, y: view.frame.midY , width: view.frame.width * 0.5, height: view.frame.width * 0.5)
+        
         start.layer.cornerRadius = 0.5 * start.bounds.size.width
         start.clipsToBounds = true
         
         //myscores button
-        myScores.frame = CGRect(x: start.frame.minX + 0.25 * start.frame.width , y: 1.25 * start.frame.maxY , width: start.frame.width * 0.5, height: start.frame.width * 0.5)
+        myScores.frame = CGRect(x: start.frame.minX + 0.25 * start.frame.width , y: start.frame.maxY + 20 , width: start.frame.width * 0.55, height: start.frame.width * 0.55)
         myScores.layer.cornerRadius = 0.5 * myScores.bounds.size.width
         myScores.clipsToBounds = true
-        myScores.layer.borderWidth = 1.0
-        myScores.layer.borderColor = UIColor.black.cgColor
+        myScores.layer.borderWidth = 2.0
+        myScores.layer.borderColor = UIColor.white.cgColor
         countDownLabel.isHidden = true
     }
     override func viewDidLoad() {
