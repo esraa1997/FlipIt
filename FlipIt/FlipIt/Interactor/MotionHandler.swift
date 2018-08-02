@@ -70,7 +70,7 @@ class MotionHandler: UIViewController {
 					self.motionsPerformed.append(possibleMotions.tiltedToTheRight.rawValue)
 					print("turn right")
 				}
-				if data.acceleration.x < -0.8 && data.acceleration.x > -1.2 {
+				if data.acceleration.z < -0.8 && data.acceleration.z > -1.2 {
 					self.motionsPerformed.append(possibleMotions.up.rawValue)
 					print("Up")
 				}
