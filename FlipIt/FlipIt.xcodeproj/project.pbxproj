@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62F22BD82111DFAA005F5CEE /* possibleMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BD72111DFAA005F5CEE /* possibleMotions.swift */; };
+		62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */; };
+		62F22BE02111E612005F5CEE /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDE2111E612005F5CEE /* PresenterViewController.swift */; };
+		62F22BE12111E612005F5CEE /* PresenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F22BDF2111E612005F5CEE /* PresenterViewController.xib */; };
+		62F78875211058A3006077C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F78874211058A3006077C5 /* AppDelegate.swift */; };
+		62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62F7887B211058A3006077C5 /* FlipIt.xcdatamodeld */; };
+		62F7887F211058A4006077C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F7887E211058A4006077C5 /* Assets.xcassets */; };
+		62F78882211058A4006077C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F78880211058A4006077C5 /* LaunchScreen.storyboard */; };
+		62F7888D211058F9006077C5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F7888C211058F9006077C5 /* CoreMotion.framework */; };
+		62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7888E21105B83006077C5 /* MotionHandler.swift */; };
+		62F788B72110B752006077C5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F788B62110B752006077C5 /* AVFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		62F22BD72111DFAA005F5CEE /* possibleMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = possibleMotions.swift; sourceTree = "<group>"; };
+		62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHandler.swift; sourceTree = "<group>"; };
+		62F22BDE2111E612005F5CEE /* PresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterViewController.swift; sourceTree = "<group>"; };
+		62F22BDF2111E612005F5CEE /* PresenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresenterViewController.xib; sourceTree = "<group>"; };
+		62F78871211058A3006077C5 /* FlipIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62F78874211058A3006077C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62F7887C211058A3006077C5 /* FlipIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlipIt.xcdatamodel; sourceTree = "<group>"; };
+		62F7887E211058A4006077C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62F78881211058A4006077C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62F78883211058A4006077C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62F7888A211058DE006077C5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		62F7888C211058F9006077C5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		62F7888E21105B83006077C5 /* MotionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionHandler.swift; sourceTree = "<group>"; };
+		62F788B62110B752006077C5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62F7886E211058A3006077C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F788B72110B752006077C5 /* AVFoundation.framework in Frameworks */,
+				62F7888D211058F9006077C5 /* CoreMotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62F22BD52111DF04005F5CEE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				62F78874211058A3006077C5 /* AppDelegate.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		62F22BD62111DF85005F5CEE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				62F7888E21105B83006077C5 /* MotionHandler.swift */,
+				62F22BD72111DFAA005F5CEE /* possibleMotions.swift */,
+				62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		62F22BD92111E0BD005F5CEE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				62F22BDE2111E612005F5CEE /* PresenterViewController.swift */,
+				62F22BDF2111E612005F5CEE /* PresenterViewController.xib */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		62F78868211058A3006077C5 = {
+			isa = PBXGroup;
+			children = (
+				62F78873211058A3006077C5 /* FlipIt */,
+				62F78872211058A3006077C5 /* Products */,
+				62F78889211058DE006077C5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		62F78872211058A3006077C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62F78871211058A3006077C5 /* FlipIt.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62F78873211058A3006077C5 /* FlipIt */ = {
+			isa = PBXGroup;
+			children = (
+				62F22BD92111E0BD005F5CEE /* Presenter */,
+				62F22BD62111DF85005F5CEE /* Interactor */,
+				62F22BD52111DF04005F5CEE /* Router */,
+				62F7887E211058A4006077C5 /* Assets.xcassets */,
+				62F78880211058A4006077C5 /* LaunchScreen.storyboard */,
+				62F78883211058A4006077C5 /* Info.plist */,
+				62F7887B211058A3006077C5 /* FlipIt.xcdatamodeld */,
+			);
+			path = FlipIt;
+			sourceTree = "<group>";
+		};
+		62F78889211058DE006077C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62F788B62110B752006077C5 /* AVFoundation.framework */,
+				62F7888C211058F9006077C5 /* CoreMotion.framework */,
+				62F7888A211058DE006077C5 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62F78870211058A3006077C5 /* FlipIt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62F78886211058A4006077C5 /* Build configuration list for PBXNativeTarget "FlipIt" */;
+			buildPhases = (
+				62F7886D211058A3006077C5 /* Sources */,
+				62F7886E211058A3006077C5 /* Frameworks */,
+				62F7886F211058A3006077C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlipIt;
+			productName = FlipIt;
+			productReference = 62F78871211058A3006077C5 /* FlipIt.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62F78869211058A3006077C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Esraa Abdelmotteleb";
+				TargetAttributes = {
+					62F78870211058A3006077C5 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+				};
+			};
+			buildConfigurationList = 62F7886C211058A3006077C5 /* Build configuration list for PBXProject "FlipIt" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62F78868211058A3006077C5;
+			productRefGroup = 62F78872211058A3006077C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62F78870211058A3006077C5 /* FlipIt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62F7886F211058A3006077C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F78882211058A4006077C5 /* LaunchScreen.storyboard in Resources */,
+				62F7887F211058A4006077C5 /* Assets.xcassets in Resources */,
+				62F22BE12111E612005F5CEE /* PresenterViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62F7886D211058A3006077C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F78875211058A3006077C5 /* AppDelegate.swift in Sources */,
+				62F22BD82111DFAA005F5CEE /* possibleMotions.swift in Sources */,
+				62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */,
+				62F22BE02111E612005F5CEE /* PresenterViewController.swift in Sources */,
+				62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */,
+				62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		62F78880211058A4006077C5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62F78881211058A4006077C5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62F78884211058A4006077C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		62F78885211058A4006077C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62F78887211058A4006077C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6EHVSPSFG7;
+				INFOPLIST_FILE = FlipIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coformatique.flipit.poc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62F78888211058A4006077C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6EHVSPSFG7;
+				INFOPLIST_FILE = FlipIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coformatique.flipit.poc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62F7886C211058A3006077C5 /* Build configuration list for PBXProject "FlipIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62F78884211058A4006077C5 /* Debug */,
+				62F78885211058A4006077C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62F78886211058A4006077C5 /* Build configuration list for PBXNativeTarget "FlipIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62F78887211058A4006077C5 /* Debug */,
+				62F78888211058A4006077C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		62F7887B211058A3006077C5 /* FlipIt.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				62F7887C211058A3006077C5 /* FlipIt.xcdatamodel */,
+			);
+			currentVersion = 62F7887C211058A3006077C5 /* FlipIt.xcdatamodel */;
+			path = FlipIt.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 62F78869211058A3006077C5 /* Project object */;
+}
