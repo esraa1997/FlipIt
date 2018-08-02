@@ -12,6 +12,7 @@ import UIKit
 class CommandHandler {
     
     //MARK:-Variables
+	
     static let sharedInstance = CommandHandler()
     var commandTimer = Timer()
     var timeInterval = 5.0
@@ -47,17 +48,36 @@ class CommandHandler {
             if randomNumber != possibleMotions.pressVolume.rawValue {
                 MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
             }
-            if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber) || keptHandOnScreen() {
-                score += scoreIncrement
-                print(score)
-                numberOfCommandsPerformedCorrectly += 1
-                if numberOfCommandsPerformedCorrectly % 3 == 0 {
-                    scoreIncrement += 1
-                    speedManager(multiplier: 0.8)
-                }
-                if numberOfCommandsPerformedCorrectly % 9 == 0 {
-                    level += 1
-                }
+            if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber) || keptHandOnScreen() || randomNumber == 3 {
+				if randomNumber == possibleMotions.coverScreen.rawValue  && MotionHandler.sharedInstance.detector == false  {
+					print("wrong")
+					PresenterViewController.sharedInstance.speak(text: "You lost. Hahahahaha!")
+					MotionHandler.sharedInstance.stopDetecting()
+					commandTimer.invalidate()
+					//                PresenterViewController.sharedInstance.colorView.backgroundColor = UIColor.red
+					//                PresenterViewController.sharedInstance.gameOver(score:score)
+					
+					let defaults = UserDefaults.standard
+					let highestScore =  defaults.integer(forKey: "highestScore")
+					if score > highestScore {
+						defaults.set(score, forKey: "highestScore")
+					}
+					print ("Highest Score = \(highestScore)")
+					return
+				
+				} else {
+					score += scoreIncrement
+					print(score)
+					numberOfCommandsPerformedCorrectly += 1
+					if numberOfCommandsPerformedCorrectly % 3 == 0 {
+						scoreIncrement += 1
+						speedManager(multiplier: 0.8)
+					}
+					if numberOfCommandsPerformedCorrectly % 9 == 0 {
+						level += 1
+					}
+					MotionHandler.sharedInstance.detector = false
+				}
 //                PresenterViewController.sharedInstance.colorView.backgroundColor = UIColor.green
             } else {
                 print("wrong")

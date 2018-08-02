@@ -14,6 +14,7 @@ import AVFoundation
 class MotionHandler: UIViewController {
     //MARK:- Variables
     static let sharedInstance = MotionHandler()
+	var detector = false
     
     var motionManager = CMMotionManager()
     var pitches = [Double]()
@@ -96,6 +97,7 @@ class MotionHandler: UIViewController {
 
     @objc private func proximityChanged() {
         motionsPerformed.append(possibleMotions.coverScreen.rawValue)
+		detector = !detector
     }
     
     //s
