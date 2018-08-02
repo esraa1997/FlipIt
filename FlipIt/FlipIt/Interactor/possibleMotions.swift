@@ -11,21 +11,24 @@ enum possibleMotions: Int {
     case tiltedToTheLeft = 0
     case tiltedToTheRight = 1
     case tiltedTowardsFace = 2
-    case tiltedAwayFromFace = 3
-    case touchedScreen = 4
+    case touchedScreen = 3
+	case up = 4
+	case down = 5
     
     var action: String {
         switch self {
         case .tiltedToTheLeft:
-            return "Left"
+            return "turn Left"
         case .tiltedToTheRight:
-            return "Right"
+            return "turn Right"
         case .tiltedTowardsFace:
-            return "Face"
-        case .tiltedAwayFromFace:
-            return "Back"
+            return "tilt towards Face"
         case .touchedScreen:
             return "cover Screen"
+		case .up:
+			return "turn Up"
+		case .down:
+			return "turn down"
         default:
             return "no Motion"
             

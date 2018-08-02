@@ -21,8 +21,9 @@ class PresenterViewController: UIViewController {
     //MARK:- IBActiona
     @IBAction func start(_ sender: Any) {
         start.isHidden = true
-        MotionHandler.sharedInstance.startDetecting(updateInterval: 0.02, proximitySensorEnabled: true)
-        countdownLabelTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+//        MotionHandler.sharedInstance.startDetecting(updateInterval: 0.02, proximitySensorEnabled: true)
+		MotionHandler.sharedInstance.startDetectingMotion(updateInterval: 0.02)
+		countdownLabelTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     @IBAction func myScores(_ sender: Any) {
     }
@@ -46,7 +47,6 @@ class PresenterViewController: UIViewController {
         myScores.clipsToBounds = true
         myScores.layer.borderWidth = 1.0
         myScores.layer.borderColor = UIColor.black.cgColor
-        
         countDownLabel.isHidden = true
     }
     override func viewDidLoad() {

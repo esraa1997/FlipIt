@@ -32,7 +32,7 @@ class MotionHandler: UIViewController {
         startDetectingProximity(proximitySensorEnabled)
     }
     func getDetectionResults () {
-        didDetect()
+       // didDetect()
         proximityChanged()
     }
     func stopDetecting() {
@@ -57,7 +57,36 @@ class MotionHandler: UIViewController {
         }
     }
     
-    
+	func startDetectingMotion(updateInterval:Double) {
+		let queue = OperationQueue()
+		startDetectingProximity(true)
+		motionManager.startAccelerometerUpdates(to: queue) { (accelerometerData, error) in
+			if let data = accelerometerData {
+				if data.acceleration.x < -0.8 && data.acceleration.x > -1.2 {
+					self.motionsPerformed.append(possibleMotions.tiltedToTheLeft.rawValue)
+					print("turn left")
+				}
+				if data.acceleration.x > 0.8 && data.acceleration.x < 1.2 {
+					self.motionsPerformed.append(possibleMotions.tiltedToTheRight.rawValue)
+					print("turn right")
+				}
+				if data.acceleration.x < -0.8 && data.acceleration.x > -1.2 {
+					self.motionsPerformed.append(possibleMotions.up.rawValue)
+					print("Up")
+				}
+				if data.acceleration.z > 0.8 && data.acceleration.z < 1.2 {
+					self.motionsPerformed.append(possibleMotions.down.rawValue)
+					print("Down")
+				}
+				if data.acceleration.y < -0.8 && data.acceleration.y > -1.2 {
+					self.motionsPerformed.append(possibleMotions.tiltedTowardsFace.rawValue)
+					print("Face")
+				}
+			}
+			
+			
+		}
+	}
     
     private func startDetectingProximity(_ enabled: Bool) {
         let device = UIDevice.current
@@ -70,33 +99,33 @@ class MotionHandler: UIViewController {
         }
     }
     
-    private func didDetect()  {
-        if pitches.first == nil {
-            print ("pitches.first == nil")
-        }
-        if pitches.last == nil {
-            print ("pitches.last == nil")
-        }
-        let pitchDiffrence = pitches.first! - pitches.last!
-        let rollDiffrence = rolls.first! - rolls.last!
-        
-        if pitchDiffrence > 3 {
-            motionsPerformed.append(possibleMotions.tiltedAwayFromFace.rawValue)
-        }
-        if pitchDiffrence < -3  {
-            motionsPerformed.append(possibleMotions.tiltedTowardsFace.rawValue)
-        }
-        if rollDiffrence > 3 {
-            motionsPerformed.append(possibleMotions.tiltedToTheLeft.rawValue)
-        }
-         if rollDiffrence < -3  {
-            motionsPerformed.append(possibleMotions.tiltedToTheRight.rawValue)
-        }
-        
-        pitches.removeAll()
-        rolls.removeAll()
-    }
-    
+//    private func didDetect()  {
+//        if pitches.first == nil {
+//            print ("pitches.first == nil")
+//        }
+//        if pitches.last == nil {
+//            print ("pitches.last == nil")
+//        }
+//        let pitchDiffrence = pitches.first! - pitches.last!
+//        let rollDiffrence = rolls.first! - rolls.last!
+//
+//        if pitchDiffrence > 3 {
+//            motionsPerformed.append(possibleMotions.tiltedAwayFromFace.rawValue)
+//        }
+//        if pitchDiffrence < -3  {
+//            motionsPerformed.append(possibleMotions.tiltedTowardsFace.rawValue)
+//        }
+//        if rollDiffrence > 3 {
+//            motionsPerformed.append(possibleMotions.tiltedToTheLeft.rawValue)
+//        }
+//         if rollDiffrence < -3  {
+//            motionsPerformed.append(possibleMotions.tiltedToTheRight.rawValue)
+//        }
+//
+//        pitches.removeAll()
+//        rolls.removeAll()
+//    }
+//
     @objc private func proximityChanged() {
         motionsPerformed.append(possibleMotions.touchedScreen.rawValue)
     }
