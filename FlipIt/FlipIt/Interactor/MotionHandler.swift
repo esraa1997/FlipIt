@@ -14,7 +14,7 @@ import AVFoundation
 class MotionHandler: UIViewController {
     //MARK:- Variables
     static let sharedInstance = MotionHandler()
-	var detector = false
+	var screenCovered = false
     
     var motionManager = CMMotionManager()
     
@@ -41,10 +41,6 @@ class MotionHandler: UIViewController {
         audioSession.addObserver (self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
         do { try audioSession.setActive(true) }
         catch { print("\(error)") }
-    }
-    func getDetectionResults () {
-       // didDetect()
-        proximityChanged()
     }
     func stopDetecting() {
         motionManager.stopDeviceMotionUpdates()
@@ -95,7 +91,7 @@ class MotionHandler: UIViewController {
 
     @objc private func proximityChanged() {
         motionsPerformed.append(possibleMotions.coverScreen.rawValue)
-		detector = !detector
+		screenCovered = !screenCovered
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

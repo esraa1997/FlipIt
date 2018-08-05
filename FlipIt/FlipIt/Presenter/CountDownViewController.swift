@@ -44,7 +44,8 @@ class CountDownViewController: UIViewController {
             let gameViewController = GameViewController()
             self.present(gameViewController, animated: false)
             
-            CommandHandler.sharedInstance.updateCommandTimer()
+            CommandHandler.sharedInstance.giveCommand()
+            CommandHandler.sharedInstance.speedManager(multiplier: 1)
         }
     }
 

@@ -15,7 +15,7 @@ class CommandHandler {
 	
     static let sharedInstance = CommandHandler()
     var commandTimer = Timer()
-    var timeInterval = 5.0
+    var timeInterval = 2.0
     
     var randomNumber: Int = -1
     var numberOfCommandsGiven = 0
@@ -32,38 +32,17 @@ class CommandHandler {
         if randomNumber != -1 {
             commandTimer.invalidate()
         }
-
         commandTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(updateCommandTimer), userInfo: nil, repeats: true)
     }
     
-    //MaARK:- Private Functions
     @objc func updateCommandTimer()  {
-        if randomNumber == -1 {
-            speedManager(multiplier: 1)
-        }
-        MotionHandler.sharedInstance.getDetectionResults()
-
-        if numberOfCommandsGiven > 0 {
+        // Test whether given command is performed correctly
             if randomNumber != possibleMotions.pressVolume.rawValue {
                 MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
             }
             if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
-				if randomNumber == possibleMotions.coverScreen.rawValue  && MotionHandler.sharedInstance.detector == false  {
-					print("wrong")
-					speak(text: "You lost. Hahahahaha!")
-					MotionHandler.sharedInstance.stopDetecting()
-					commandTimer.invalidate()
-					//                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.red
-					//                StartPageViewController.sharedInstance.gameOver(score:score)
-					
-					let defaults = UserDefaults.standard
-					let highestScore =  defaults.integer(forKey: "highestScore")
-					if score > highestScore {
-						defaults.set(score, forKey: "highestScore")
-					}
-					print ("Highest Score = \(highestScore)")
-					return
-				
+				if randomNumber == possibleMotions.coverScreen.rawValue  && MotionHandler.sharedInstance.screenCovered == false  {
+					gameOver()
 				} else {
 					score += scoreIncrement
 					print(score)
@@ -75,41 +54,31 @@ class CommandHandler {
 					if numberOfCommandsPerformedCorrectly % 9 == 0 {
 						level += 1
 					}
-					MotionHandler.sharedInstance.detector = false
+					MotionHandler.sharedInstance.screenCovered = false
 				}
 //                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.green
             } else {
-                print("wrong")
-                speak(text: "You lost. Hahahahaha!")
-                MotionHandler.sharedInstance.stopDetecting()
-                commandTimer.invalidate()
-//                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.red
-//                StartPageViewController.sharedInstance.gameOver(score:score)
-                
-                let defaults = UserDefaults.standard
-                let highestScore =  defaults.integer(forKey: "highestScore")
-                if score > highestScore {
-                    defaults.set(score, forKey: "highestScore")
-                }
-                print ("Highest Score = \(highestScore)")
-                return
+                gameOver()
             }
-        }
         MotionHandler.sharedInstance.motionsPerformed.removeAll()
+        
+        giveCommand ()
+    }
+    func giveCommand () {
         randomNumber = generateRandomNumber(max: MotionHandler.sharedInstance.numberOfPossibleMotions)
         speakCommand(commandNumber: randomNumber)
         numberOfCommandsGiven += 1
     }
     
+    //MaARK:- Private Functions
     private func generateRandomNumber(max: Int) -> Int {
         let generatedNumber = Int (arc4random_uniform(UInt32(max)))
         return generatedNumber
     }
-    
     private func speak (text: String) {
         let mySynthesizer = AVSpeechSynthesizer()
         let myUtterence = AVSpeechUtterance(string:text)
-        myUtterence.rate = 0.3
+        myUtterence.rate = 0.5
         myUtterence.voice = AVSpeechSynthesisVoice(language: "en-au")
         myUtterence.pitchMultiplier = 1.0 //between 0.5 and 2.0. Default is 1.0.
         mySynthesizer.speak(myUtterence)
@@ -117,6 +86,21 @@ class CommandHandler {
     private func speakCommand (commandNumber: Int) {
         MotionHandler.sharedInstance.possibleMotion = possibleMotions(rawValue: commandNumber)
         speak(text: MotionHandler.sharedInstance.action)
+    }
+    private func gameOver () {
+        print("wrong")
+        speak(text: "You lost. Hahahahaha!")
+        MotionHandler.sharedInstance.stopDetecting()
+        commandTimer.invalidate()
+        //                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.red
+        //                StartPageViewController.sharedInstance.gameOver(score:score)
+        let defaults = UserDefaults.standard
+        let highestScore =  defaults.integer(forKey: "highestScore")
+        if score > highestScore {
+            defaults.set(score, forKey: "highestScore")
+        }
+        print ("Highest Score = \(highestScore)")
+        return
     }
 
 
