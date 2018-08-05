@@ -1,5 +1,5 @@
 //
-//  PresenterViewController.swift
+//  StartPageViewController.swift
 //  FlipIt
 //
 //  Created by Esraa Abdelmotteleb on 8/1/18.
@@ -7,34 +7,26 @@
 //
 
 import UIKit
-import CoreMotion
-import AVFoundation
 import MediaPlayer
 
-class PresenterViewController: UIViewController {
+class StartPageViewController: UIViewController {
     
     //MARK:- IBOutlets
-    @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var start: UIButton!
     @IBOutlet weak var myScores: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     //MARK:- IBActions
     @IBAction func start(_ sender: Any) {
-        start.isHidden = true
-        titleLabel.isHidden = true
-        myScores.isHidden = true
-        
         MotionHandler.sharedInstance.startDetection(updateInterval: 0.02, proximitySensorEnabled: true)
-		countdownLabelTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        let countDownViewController = CountDownViewController()
+        self.present(countDownViewController, animated: false)
     }
     @IBAction func myScores(_ sender: Any) {
     }
     
     //MARK:- Variables
-    static let sharedInstance = PresenterViewController()
-    var counter = 4
-    var countdownLabelTimer = Timer()
+    static let sharedInstance = StartPageViewController()
     
     //MARK:- UI Standard Functions
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +43,6 @@ class PresenterViewController: UIViewController {
         myScores.clipsToBounds = true
         myScores.layer.borderWidth = 2.0
         myScores.layer.borderColor = UIColor.white.cgColor
-        countDownLabel.isHidden = true
     }
     override func viewDidLoad() {
     }
@@ -64,28 +55,6 @@ class PresenterViewController: UIViewController {
     
     
     //MARK:- UI Functions
-    func speak (text: String) {
-        let mySynthesizer = AVSpeechSynthesizer()
-        let myUtterence = AVSpeechUtterance(string:text)
-        myUtterence.rate = 0.3
-        myUtterence.voice = AVSpeechSynthesisVoice(language: "en-au")
-        myUtterence.pitchMultiplier = 1.0 //between 0.5 and 2.0. Default is 1.0.
-        mySynthesizer.speak(myUtterence)
-    }
-    func speakCommand (commandNumber: Int) {
-        MotionHandler.sharedInstance.possibleMotion = possibleMotions(rawValue: commandNumber)
-        speak(text: MotionHandler.sharedInstance.action)
-    }
-    @objc func updateTimer() {
-        countDownLabel.isHidden = false
-        counter -= 1
-        countDownLabel.text = String(counter)
-        if counter == 0 {
-            countdownLabelTimer.invalidate()
-            countDownLabel.text = ""
-            CommandHandler.sharedInstance.updateCommandTimer()
-        }
-    }
     
     func manageSliderView() {
         let systemSlider = MPVolumeView().subviews.first { (aView) -> Bool in

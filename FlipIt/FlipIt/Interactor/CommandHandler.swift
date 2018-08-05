@@ -6,8 +6,8 @@
 //  Copyright © 2018 Esraa Abdelmotteleb. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import AVFoundation
 
 class CommandHandler {
     
@@ -50,11 +50,11 @@ class CommandHandler {
             if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
 				if randomNumber == possibleMotions.coverScreen.rawValue  && MotionHandler.sharedInstance.detector == false  {
 					print("wrong")
-					PresenterViewController.sharedInstance.speak(text: "You lost. Hahahahaha!")
+					speak(text: "You lost. Hahahahaha!")
 					MotionHandler.sharedInstance.stopDetecting()
 					commandTimer.invalidate()
-					//                PresenterViewController.sharedInstance.colorView.backgroundColor = UIColor.red
-					//                PresenterViewController.sharedInstance.gameOver(score:score)
+					//                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.red
+					//                StartPageViewController.sharedInstance.gameOver(score:score)
 					
 					let defaults = UserDefaults.standard
 					let highestScore =  defaults.integer(forKey: "highestScore")
@@ -77,14 +77,14 @@ class CommandHandler {
 					}
 					MotionHandler.sharedInstance.detector = false
 				}
-//                PresenterViewController.sharedInstance.colorView.backgroundColor = UIColor.green
+//                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.green
             } else {
                 print("wrong")
-                PresenterViewController.sharedInstance.speak(text: "You lost. Hahahahaha!")
+                speak(text: "You lost. Hahahahaha!")
                 MotionHandler.sharedInstance.stopDetecting()
                 commandTimer.invalidate()
-//                PresenterViewController.sharedInstance.colorView.backgroundColor = UIColor.red
-//                PresenterViewController.sharedInstance.gameOver(score:score)
+//                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.red
+//                StartPageViewController.sharedInstance.gameOver(score:score)
                 
                 let defaults = UserDefaults.standard
                 let highestScore =  defaults.integer(forKey: "highestScore")
@@ -97,7 +97,7 @@ class CommandHandler {
         }
         MotionHandler.sharedInstance.motionsPerformed.removeAll()
         randomNumber = generateRandomNumber(max: MotionHandler.sharedInstance.numberOfPossibleMotions)
-        PresenterViewController.sharedInstance.speakCommand(commandNumber: randomNumber)
+        speakCommand(commandNumber: randomNumber)
         numberOfCommandsGiven += 1
     }
     
@@ -106,6 +106,18 @@ class CommandHandler {
         return generatedNumber
     }
     
+    private func speak (text: String) {
+        let mySynthesizer = AVSpeechSynthesizer()
+        let myUtterence = AVSpeechUtterance(string:text)
+        myUtterence.rate = 0.3
+        myUtterence.voice = AVSpeechSynthesisVoice(language: "en-au")
+        myUtterence.pitchMultiplier = 1.0 //between 0.5 and 2.0. Default is 1.0.
+        mySynthesizer.speak(myUtterence)
+    }
+    private func speakCommand (commandNumber: Int) {
+        MotionHandler.sharedInstance.possibleMotion = possibleMotions(rawValue: commandNumber)
+        speak(text: MotionHandler.sharedInstance.action)
+    }
 
 
 }

@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62B686062116F3D300A32203 /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686042116F3D300A32203 /* CountDownViewController.swift */; };
+		62B686072116F3D300A32203 /* CountDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686052116F3D300A32203 /* CountDownViewController.xib */; };
+		62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686082116FC7C00A32203 /* GameViewController.swift */; };
+		62B6860B2116FC7C00A32203 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686092116FC7C00A32203 /* GameViewController.xib */; };
 		62F22BD82111DFAA005F5CEE /* possibleMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BD72111DFAA005F5CEE /* possibleMotions.swift */; };
 		62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */; };
-		62F22BE02111E612005F5CEE /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDE2111E612005F5CEE /* PresenterViewController.swift */; };
-		62F22BE12111E612005F5CEE /* PresenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F22BDF2111E612005F5CEE /* PresenterViewController.xib */; };
+		62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDE2111E612005F5CEE /* StartPageViewController.swift */; };
+		62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F22BDF2111E612005F5CEE /* StartPageViewController.xib */; };
 		62F78875211058A3006077C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F78874211058A3006077C5 /* AppDelegate.swift */; };
 		62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62F7887B211058A3006077C5 /* FlipIt.xcdatamodeld */; };
 		62F7887F211058A4006077C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F7887E211058A4006077C5 /* Assets.xcassets */; };
@@ -21,10 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62B686042116F3D300A32203 /* CountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewController.swift; sourceTree = "<group>"; };
+		62B686052116F3D300A32203 /* CountDownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountDownViewController.xib; sourceTree = "<group>"; };
+		62B686082116FC7C00A32203 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		62B686092116FC7C00A32203 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		62F22BD72111DFAA005F5CEE /* possibleMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = possibleMotions.swift; sourceTree = "<group>"; };
 		62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHandler.swift; sourceTree = "<group>"; };
-		62F22BDE2111E612005F5CEE /* PresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterViewController.swift; sourceTree = "<group>"; };
-		62F22BDF2111E612005F5CEE /* PresenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresenterViewController.xib; sourceTree = "<group>"; };
+		62F22BDE2111E612005F5CEE /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
+		62F22BDF2111E612005F5CEE /* StartPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartPageViewController.xib; sourceTree = "<group>"; };
 		62F78871211058A3006077C5 /* FlipIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F78874211058A3006077C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F7887C211058A3006077C5 /* FlipIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlipIt.xcdatamodel; sourceTree = "<group>"; };
@@ -71,8 +79,12 @@
 		62F22BD92111E0BD005F5CEE /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				62F22BDE2111E612005F5CEE /* PresenterViewController.swift */,
-				62F22BDF2111E612005F5CEE /* PresenterViewController.xib */,
+				62F22BDE2111E612005F5CEE /* StartPageViewController.swift */,
+				62F22BDF2111E612005F5CEE /* StartPageViewController.xib */,
+				62B686042116F3D300A32203 /* CountDownViewController.swift */,
+				62B686052116F3D300A32203 /* CountDownViewController.xib */,
+				62B686082116FC7C00A32203 /* GameViewController.swift */,
+				62B686092116FC7C00A32203 /* GameViewController.xib */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -176,9 +188,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B686072116F3D300A32203 /* CountDownViewController.xib in Resources */,
 				62F78882211058A4006077C5 /* LaunchScreen.storyboard in Resources */,
 				62F7887F211058A4006077C5 /* Assets.xcassets in Resources */,
-				62F22BE12111E612005F5CEE /* PresenterViewController.xib in Resources */,
+				62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */,
+				62B6860B2116FC7C00A32203 /* GameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,9 +206,11 @@
 				62F78875211058A3006077C5 /* AppDelegate.swift in Sources */,
 				62F22BD82111DFAA005F5CEE /* possibleMotions.swift in Sources */,
 				62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */,
-				62F22BE02111E612005F5CEE /* PresenterViewController.swift in Sources */,
+				62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */,
+				62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */,
 				62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */,
 				62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */,
+				62B686062116F3D300A32203 /* CountDownViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

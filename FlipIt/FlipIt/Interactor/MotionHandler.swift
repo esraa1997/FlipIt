@@ -17,14 +17,12 @@ class MotionHandler: UIViewController {
 	var detector = false
     
     var motionManager = CMMotionManager()
-    var pitches = [Double]()
-    var rolls = [Double]()
-    let queue = OperationQueue()
     
     var possibleMotion: possibleMotions? = .none
     var action: String {
         return possibleMotion!.action
     }
+    
     var numberOfPossibleMotions = 7 //TODO: change it as Sandra adds her stuff
     var motionsPerformed = [Int]()
     
@@ -100,14 +98,12 @@ class MotionHandler: UIViewController {
 		detector = !detector
     }
     
-    //s
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let key = keyPath else { return }
         switch key {
         case "outputVolume":
-            guard let dict = change, let temp = dict[NSKeyValueChangeKey.newKey] as? Float, temp != 0.5 else { return }
-            // set the volume to half point
-            PresenterViewController.sharedInstance.manageSliderView()
+            //TODO: set the volume to half point
+            StartPageViewController.sharedInstance.manageSliderView()
             MotionHandler.sharedInstance.motionsPerformed.append(possibleMotions.pressVolume.rawValue)
         default:
             break
@@ -117,4 +113,4 @@ class MotionHandler: UIViewController {
     //e
 }
 
-
+//TODO: When it starts with cover screen, it says I lost

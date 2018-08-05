@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let presenter = PresenterViewController(nibName: "PresenterViewController", bundle: nil)
+        let presenter = StartPageViewController(nibName: "StartPageViewController", bundle: nil)
         window?.rootViewController = presenter
         window?.makeKeyAndVisible()
         
