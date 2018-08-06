@@ -11,7 +11,9 @@
 		62B686072116F3D300A32203 /* CountDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686052116F3D300A32203 /* CountDownViewController.xib */; };
 		62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686082116FC7C00A32203 /* GameViewController.swift */; };
 		62B6860B2116FC7C00A32203 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686092116FC7C00A32203 /* GameViewController.xib */; };
-		62F22BD82111DFAA005F5CEE /* possibleMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BD72111DFAA005F5CEE /* possibleMotions.swift */; };
+		62B686142117501C00A32203 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686122117501C00A32203 /* GameOverViewController.swift */; };
+		62B686152117501C00A32203 /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686132117501C00A32203 /* GameOverViewController.xib */; };
+		62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */; };
 		62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */; };
 		62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDE2111E612005F5CEE /* StartPageViewController.swift */; };
 		62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F22BDF2111E612005F5CEE /* StartPageViewController.xib */; };
@@ -29,7 +31,9 @@
 		62B686052116F3D300A32203 /* CountDownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountDownViewController.xib; sourceTree = "<group>"; };
 		62B686082116FC7C00A32203 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		62B686092116FC7C00A32203 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
-		62F22BD72111DFAA005F5CEE /* possibleMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = possibleMotions.swift; sourceTree = "<group>"; };
+		62B686122117501C00A32203 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		62B686132117501C00A32203 /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
+		62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleMotions.swift; sourceTree = "<group>"; };
 		62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHandler.swift; sourceTree = "<group>"; };
 		62F22BDE2111E612005F5CEE /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		62F22BDF2111E612005F5CEE /* StartPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartPageViewController.xib; sourceTree = "<group>"; };
@@ -70,13 +74,13 @@
 			isa = PBXGroup;
 			children = (
 				62F7888E21105B83006077C5 /* MotionHandler.swift */,
-				62F22BD72111DFAA005F5CEE /* possibleMotions.swift */,
+				62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */,
 				62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		62F22BD92111E0BD005F5CEE /* Presenter */ = {
+		62F22BD92111E0BD005F5CEE /* View */ = {
 			isa = PBXGroup;
 			children = (
 				62F22BDE2111E612005F5CEE /* StartPageViewController.swift */,
@@ -85,8 +89,10 @@
 				62B686052116F3D300A32203 /* CountDownViewController.xib */,
 				62B686082116FC7C00A32203 /* GameViewController.swift */,
 				62B686092116FC7C00A32203 /* GameViewController.xib */,
+				62B686122117501C00A32203 /* GameOverViewController.swift */,
+				62B686132117501C00A32203 /* GameOverViewController.xib */,
 			);
-			path = Presenter;
+			path = View;
 			sourceTree = "<group>";
 		};
 		62F78868211058A3006077C5 = {
@@ -109,7 +115,7 @@
 		62F78873211058A3006077C5 /* FlipIt */ = {
 			isa = PBXGroup;
 			children = (
-				62F22BD92111E0BD005F5CEE /* Presenter */,
+				62F22BD92111E0BD005F5CEE /* View */,
 				62F22BD62111DF85005F5CEE /* Interactor */,
 				62F22BD52111DF04005F5CEE /* Router */,
 				62F7887E211058A4006077C5 /* Assets.xcassets */,
@@ -192,6 +198,7 @@
 				62F78882211058A4006077C5 /* LaunchScreen.storyboard in Resources */,
 				62F7887F211058A4006077C5 /* Assets.xcassets in Resources */,
 				62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */,
+				62B686152117501C00A32203 /* GameOverViewController.xib in Resources */,
 				62B6860B2116FC7C00A32203 /* GameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,8 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B686142117501C00A32203 /* GameOverViewController.swift in Sources */,
 				62F78875211058A3006077C5 /* AppDelegate.swift in Sources */,
-				62F22BD82111DFAA005F5CEE /* possibleMotions.swift in Sources */,
+				62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */,
 				62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */,
 				62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */,
 				62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */,
@@ -349,7 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6EHVSPSFG7;
 				INFOPLIST_FILE = FlipIt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,7 +376,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6EHVSPSFG7;
 				INFOPLIST_FILE = FlipIt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

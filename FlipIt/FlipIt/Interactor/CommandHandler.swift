@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 class CommandHandler {
     
@@ -15,7 +16,8 @@ class CommandHandler {
 	
     static let sharedInstance = CommandHandler()
     var commandTimer = Timer()
-    var timeInterval = 2.0
+    var timeInterval = 4.0
+    var oldTimeInterval = 4.0
     
     var randomNumber: Int = -1
     var numberOfCommandsGiven = 0
@@ -23,56 +25,72 @@ class CommandHandler {
     
     var score = 0
     var scoreIncrement = 1
-    
     var level = 1
     
+    var originalVolume: Float = 0
     //MaARK:- Public Functions
-    func speedManager(multiplier: Double)  {
-        timeInterval *= multiplier
+    func timerManager(multiplier: Double)  {//TODO: rename to update timer
+       
         if randomNumber != -1 {
             commandTimer.invalidate()
         }
-        commandTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(updateCommandTimer), userInfo: nil, repeats: true)
+        commandTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(validateCommand), userInfo: nil, repeats: true)
     }
     
-    @objc func updateCommandTimer()  {
-        // Test whether given command is performed correctly
-            if randomNumber != possibleMotions.pressVolume.rawValue {
-                MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
-            }
-            if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
-				if randomNumber == possibleMotions.coverScreen.rawValue  && MotionHandler.sharedInstance.screenCovered == false  {
-					gameOver()
-				} else {
-					score += scoreIncrement
-					print(score)
-					numberOfCommandsPerformedCorrectly += 1
-					if numberOfCommandsPerformedCorrectly % 3 == 0 {
-						scoreIncrement += 1
-						speedManager(multiplier: 0.8)
-					}
-					if numberOfCommandsPerformedCorrectly % 9 == 0 {
-						level += 1
-					}
-					MotionHandler.sharedInstance.screenCovered = false
-				}
-//                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.green
-            } else {
-                gameOver()
-            }
-        MotionHandler.sharedInstance.motionsPerformed.removeAll()
+    @objc func validateCommand() -> Bool {
+        let commandIsPressVolume = (randomNumber == PossibleMotions.pressVolume.rawValue)
+        let commandIsCoverScreen = (randomNumber == PossibleMotions.coverScreen.rawValue)
         
-        giveCommand ()
+        // Test whether given command is performed correctly
+
+            if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
+                score += scoreIncrement
+                print(score)
+                numberOfCommandsPerformedCorrectly += 1
+                manageSpeedAndLevel()
+                MotionHandler.sharedInstance.motionsPerformed.removeAll()
+                MotionHandler.sharedInstance.screenCovered = false
+                return true
+            } else if commandIsCoverScreen && MotionHandler.sharedInstance.screenCovered == true {
+                score += scoreIncrement
+                print(score)
+                numberOfCommandsPerformedCorrectly += 1
+                manageSpeedAndLevel()
+                MotionHandler.sharedInstance.motionsPerformed.removeAll()
+                return true
+            } else if commandIsPressVolume && MotionHandler.sharedInstance.volumePressed == true {
+                score += scoreIncrement
+                print(score)
+                numberOfCommandsPerformedCorrectly += 1
+                manageSpeedAndLevel()
+                MotionHandler.sharedInstance.volumePressed = false
+                MotionHandler.sharedInstance.screenCovered = false
+                
+                StartPageViewController.sharedInstance.manageSliderView(newVolume: originalVolume)
+
+                MotionHandler.sharedInstance.motionsPerformed.removeAll()
+                return true
+            } else {
+                return false
+            }
     }
-    func giveCommand () {
+    func giveCommand () -> (Int, String) {
+        if randomNumber == PossibleMotions.coverScreen.rawValue {
+            timeInterval = oldTimeInterval
+        }
+        if randomNumber == PossibleMotions.pressVolume.rawValue {
+            originalVolume = AVAudioSession.sharedInstance().outputVolume
+        }
         randomNumber = generateRandomNumber(max: MotionHandler.sharedInstance.numberOfPossibleMotions)
         speakCommand(commandNumber: randomNumber)
         numberOfCommandsGiven += 1
+        MotionHandler.sharedInstance.possibleMotion = PossibleMotions(rawValue: randomNumber)
+        return (randomNumber, MotionHandler.sharedInstance.motion)
     }
     
     //MaARK:- Private Functions
     private func generateRandomNumber(max: Int) -> Int {
-        let generatedNumber = Int (arc4random_uniform(UInt32(max)))
+        let generatedNumber = Int(arc4random_uniform(UInt32(max)))
         return generatedNumber
     }
     private func speak (text: String) {
@@ -84,23 +102,21 @@ class CommandHandler {
         mySynthesizer.speak(myUtterence)
     }
     private func speakCommand (commandNumber: Int) {
-        MotionHandler.sharedInstance.possibleMotion = possibleMotions(rawValue: commandNumber)
-        speak(text: MotionHandler.sharedInstance.action)
+        MotionHandler.sharedInstance.possibleMotion = PossibleMotions(rawValue: commandNumber)
+        speak(text: MotionHandler.sharedInstance.motion)
     }
-    private func gameOver () {
-        print("wrong")
+    func endGame () {
         speak(text: "You lost. Hahahahaha!")
         MotionHandler.sharedInstance.stopDetecting()
-        commandTimer.invalidate()
-        //                StartPageViewController.sharedInstance.colorView.backgroundColor = UIColor.red
-        //                StartPageViewController.sharedInstance.gameOver(score:score)
-        let defaults = UserDefaults.standard
-        let highestScore =  defaults.integer(forKey: "highestScore")
-        if score > highestScore {
-            defaults.set(score, forKey: "highestScore")
+    }
+    func manageSpeedAndLevel () {
+        if numberOfCommandsPerformedCorrectly % 3 == 0 {
+            scoreIncrement += 1
+             timeInterval *= 0.8
         }
-        print ("Highest Score = \(highestScore)")
-        return
+        if numberOfCommandsPerformedCorrectly % 9 == 0 {
+            level += 1
+        }
     }
 
 
