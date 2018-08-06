@@ -38,12 +38,13 @@ class CommandHandler {
     @objc func updateCommandTimer()  {
         // Test whether given command is performed correctly
             if randomNumber != possibleMotions.pressVolume.rawValue {
-                MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
+              //  MotionHandler.sharedInstance.motionsPerformed.removeFirst(Int(MotionHandler.sharedInstance.motionsPerformed.count * 8 / 10 ) )
             }
             if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
-				if randomNumber == possibleMotions.coverScreen.rawValue  && MotionHandler.sharedInstance.screenCovered == false  {
-					gameOver()
+   				if randomNumber == possibleMotions.coverScreen.rawValue  {
+					MotionHandler.sharedInstance.screenCovered = true
 				} else {
+					MotionHandler.sharedInstance.screenCovered = false
 					score += scoreIncrement
 					print(score)
 					numberOfCommandsPerformedCorrectly += 1
