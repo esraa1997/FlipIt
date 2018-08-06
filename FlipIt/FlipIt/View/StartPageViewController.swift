@@ -18,7 +18,7 @@ class StartPageViewController: UIViewController {
     
     //MARK:- IBActions
     @IBAction func start(_ sender: Any) {
-        MotionHandler.sharedInstance.startDetection(updateInterval: 0.02, proximitySensorEnabled: true)
+        MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
         let countDownViewController = CountDownViewController()
         self.present(countDownViewController, animated: false)
     }
@@ -56,18 +56,21 @@ class StartPageViewController: UIViewController {
     
     //MARK:- UI Functions
     
-    func manageSliderView() {
+    func manageSliderView(newVolume: Float) {
         let systemSlider = MPVolumeView().subviews.first { (aView) -> Bool in
             return NSStringFromClass(aView.classForCoder) == "MPVolumeSlider" ? true : false
             } as? UISlider
-        systemSlider?.setValue(0.5, animated: false)
-        systemSlider?.isHidden = true
         guard systemSlider != nil else { return }
+        systemSlider?.setValue(newVolume, animated: false)
+        systemSlider?.isHidden = true
     }
-//    func gameOver(score: Int) {
-//        countDownLabel.text = "Your score is: " + String(score)
-//    }
 }
 
-//TODO: with volume, use contains
-//score
+//TODO:
+// volume can be changed throughout the game.
+// proximity sensor disabled after game is over
+// volume listener disabled after game is over
+// fix UI and capital/ small
+// Vibration
+
+

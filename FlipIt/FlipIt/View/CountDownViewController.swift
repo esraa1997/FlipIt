@@ -34,18 +34,15 @@ class CountDownViewController: UIViewController {
     @objc func updateTimer() {
         counter -= 1
         
-        if counter > 0 {
+        if counter >= 1 {
             countdownLabel.text = String(counter)
-        } else if counter == 0 {
-            countdownLabel.text = "GO"
         } else {
             countdownTimer.invalidate()
             
             let gameViewController = GameViewController()
             self.present(gameViewController, animated: false)
             
-            CommandHandler.sharedInstance.giveCommand()
-            CommandHandler.sharedInstance.speedManager(multiplier: 1)
+            
         }
     }
 
