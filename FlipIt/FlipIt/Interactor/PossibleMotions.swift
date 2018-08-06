@@ -25,13 +25,13 @@ enum PossibleMotions: Int {
         case .turnTowardsFace:
             return "Face"
         case .coverScreen:
-            return "cover \nScreen"
+            return "Cover \nScreen"
 		case .faceUp:
 			return "Up"
 		case .faceDown:
-			return "down"
+			return "Down"
         case.pressVolume:
-            return "volume"
+            return "Volume"
         default:
             return "no Motion"
             

@@ -22,7 +22,6 @@ class CountDownViewController: UIViewController {
         super.viewDidLoad()
         countdownLabel.text = String(counter)
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

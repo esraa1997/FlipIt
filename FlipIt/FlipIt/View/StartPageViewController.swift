@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MediaPlayer
 
 class StartPageViewController: UIViewController {
     
@@ -56,18 +55,10 @@ class StartPageViewController: UIViewController {
     
     //MARK:- UI Functions
     
-    func manageSliderView(newVolume: Float) {
-        let systemSlider = MPVolumeView().subviews.first { (aView) -> Bool in
-            return NSStringFromClass(aView.classForCoder) == "MPVolumeSlider" ? true : false
-            } as? UISlider
-        guard systemSlider != nil else { return }
-        systemSlider?.setValue(newVolume, animated: false)
-        systemSlider?.isHidden = true
-    }
+    
 }
 
 //TODO:
-// volume can be changed throughout the game.
 // proximity sensor disabled after game is over
 // volume listener disabled after game is over
 // fix UI and capital/ small

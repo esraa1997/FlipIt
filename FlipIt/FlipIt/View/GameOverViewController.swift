@@ -14,7 +14,6 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var newHighScoreLabel: UILabel!
     @IBOutlet weak var startNewGame: UIButton!
     
-    
     @IBAction func startNewGame(_ sender: Any) {
         let countdownViewController = CountDownViewController()
         self.present(countdownViewController,animated: true)
@@ -36,23 +35,10 @@ class GameOverViewController: UIViewController {
             defaults.set(score, forKey: "highestScore")
             newHighScoreLabel.isHidden = false
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

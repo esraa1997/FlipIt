@@ -21,7 +21,6 @@ class GameViewController: UIViewController {
         commandLabel.text = commandText
         
         commandTimer = Timer.scheduledTimer(timeInterval: CommandHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
-        // Do any additional setup after loading the view.
     }
     
     
@@ -43,7 +42,6 @@ class GameViewController: UIViewController {
             self.present(gameOverViewController, animated: false)
             return
         }
-        CommandHandler.sharedInstance.manageSpeedAndLevel()
         
         if CommandHandler.sharedInstance.randomNumber != -1 {
             commandTimer.invalidate()

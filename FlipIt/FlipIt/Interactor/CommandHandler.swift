@@ -26,8 +26,8 @@ class CommandHandler {
     var score = 0
     var scoreIncrement = 1
     var level = 1
-    
     var originalVolume: Float = 0
+    
     //MaARK:- Public Functions
     func timerManager(multiplier: Double)  {//TODO: rename to update timer
        
@@ -41,33 +41,20 @@ class CommandHandler {
         let commandIsPressVolume = (randomNumber == PossibleMotions.pressVolume.rawValue)
         let commandIsCoverScreen = (randomNumber == PossibleMotions.coverScreen.rawValue)
         
-        // Test whether given command is performed correctly
-
             if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
-                score += scoreIncrement
-                print(score)
-                numberOfCommandsPerformedCorrectly += 1
-                manageSpeedAndLevel()
+                manageSpeedAndLevelAndScore()
                 MotionHandler.sharedInstance.motionsPerformed.removeAll()
                 MotionHandler.sharedInstance.screenCovered = false
                 return true
             } else if commandIsCoverScreen && MotionHandler.sharedInstance.screenCovered == true {
-                score += scoreIncrement
-                print(score)
-                numberOfCommandsPerformedCorrectly += 1
-                manageSpeedAndLevel()
+                manageSpeedAndLevelAndScore()
                 MotionHandler.sharedInstance.motionsPerformed.removeAll()
                 return true
             } else if commandIsPressVolume && MotionHandler.sharedInstance.volumePressed == true {
-                score += scoreIncrement
-                print(score)
-                numberOfCommandsPerformedCorrectly += 1
-                manageSpeedAndLevel()
+                manageSpeedAndLevelAndScore()
                 MotionHandler.sharedInstance.volumePressed = false
                 MotionHandler.sharedInstance.screenCovered = false
                 
-                StartPageViewController.sharedInstance.manageSliderView(newVolume: originalVolume)
-
                 MotionHandler.sharedInstance.motionsPerformed.removeAll()
                 return true
             } else {
@@ -75,13 +62,16 @@ class CommandHandler {
             }
     }
     func giveCommand () -> (Int, String) {
+        MotionHandler.sharedInstance.volumePressed = false
+        //This is the old raw value of the command previosly spoken
         if randomNumber == PossibleMotions.coverScreen.rawValue {
             timeInterval = oldTimeInterval
         }
-        if randomNumber == PossibleMotions.pressVolume.rawValue {
-            originalVolume = AVAudioSession.sharedInstance().outputVolume
-        }
+        
         randomNumber = generateRandomNumber(max: MotionHandler.sharedInstance.numberOfPossibleMotions)
+        if randomNumber == PossibleMotions.pressVolume.rawValue {
+            originalVolume = MotionHandler.sharedInstance.getCurrentVolume()
+        }
         speakCommand(commandNumber: randomNumber)
         numberOfCommandsGiven += 1
         MotionHandler.sharedInstance.possibleMotion = PossibleMotions(rawValue: randomNumber)
@@ -91,7 +81,7 @@ class CommandHandler {
     //MaARK:- Private Functions
     private func generateRandomNumber(max: Int) -> Int {
         let generatedNumber = Int(arc4random_uniform(UInt32(max)))
-        return generatedNumber
+        return 6
     }
     private func speak (text: String) {
         let mySynthesizer = AVSpeechSynthesizer()
@@ -108,8 +98,12 @@ class CommandHandler {
     func endGame () {
         speak(text: "You lost. Hahahahaha!")
         MotionHandler.sharedInstance.stopDetecting()
+        initialize()
     }
-    func manageSpeedAndLevel () {
+    func manageSpeedAndLevelAndScore () {
+        score += scoreIncrement
+        numberOfCommandsPerformedCorrectly += 1
+        
         if numberOfCommandsPerformedCorrectly % 3 == 0 {
             scoreIncrement += 1
              timeInterval *= 0.8
@@ -117,6 +111,20 @@ class CommandHandler {
         if numberOfCommandsPerformedCorrectly % 9 == 0 {
             level += 1
         }
+    }
+    func initialize()  {
+        timeInterval = 4.0
+        oldTimeInterval = 4.0
+        
+        randomNumber = -1
+        numberOfCommandsGiven = 0
+        numberOfCommandsPerformedCorrectly = 0
+        
+        score = 0
+        scoreIncrement = 1
+        level = 1
+        
+        originalVolume = 0
     }
 
 

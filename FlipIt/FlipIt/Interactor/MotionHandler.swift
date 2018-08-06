@@ -10,6 +10,7 @@
 import UIKit
 import CoreMotion
 import AVFoundation
+import MediaPlayer
 
 class MotionHandler: UIViewController {
     //MARK:- Variables
@@ -28,28 +29,38 @@ class MotionHandler: UIViewController {
     var motionsPerformed = [0,0,0,0]
     
     let audioSession = AVAudioSession.sharedInstance()
-    var originalVolume:Float = 0
     
     //MARK:- Public Functions
     func startDetection(updateInterval:Double , proximitySensorEnabled:Bool){
         detectMotion(updateInterval: updateInterval)
         detectProximity(proximitySensorEnabled)
-        
-        //Volume Control
-        let audioSession = AVAudioSession.sharedInstance()
-        originalVolume = audioSession.outputVolume
-        if originalVolume == 1 {
-            originalVolume = 0.99
-        }
-        audioSession.addObserver (self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
-        do { try audioSession.setActive(true) }
-        catch { print("\(error)") }
+        detectVolume()
     }
     func stopDetecting() {
         motionManager.stopDeviceMotionUpdates()
     }
     
+    func getCurrentVolume () -> Float{
+        do { try audioSession.setActive(true) }
+        catch { print("\(error)") }
+        
+        return AVAudioSession.sharedInstance().outputVolume
+    }
+    
     //MARK:- Private Functions
+    private func manageSliderView(setVolume: Bool, newVolume: Float) {
+        let systemSlider = MPVolumeView().subviews.first { (aView) -> Bool in
+            return NSStringFromClass(aView.classForCoder) == "MPVolumeSlider" ? true : false
+            } as? UISlider
+        guard systemSlider != nil else { return }
+        
+        if setVolume {
+            systemSlider?.setValue(newVolume, animated: false)
+        }
+        systemSlider?.isHidden = true
+    }
+    
+    
 	private func detectMotion(updateInterval:Double) {
 		let queue = OperationQueue.main
 		detectProximity(true)
@@ -93,7 +104,23 @@ class MotionHandler: UIViewController {
             print("proximity sensor not enabled")
         }
     }
+    private func detectVolume () {
+        adjustVolume()
+        
+        audioSession.addObserver (self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+    }
     
+    private func adjustVolume() {
+        do { try audioSession.setActive(true) }
+        catch { print("ERROR: \(error)") }
+        
+        let originalVolume = AVAudioSession.sharedInstance().outputVolume
+        if originalVolume == 1 {
+            self.manageSliderView(setVolume: true, newVolume: 0.9375)
+        } else if originalVolume == 0 {
+            self.manageSliderView(setVolume: true, newVolume: 0.125)
+        }
+    }
 
     @objc private func proximityChanged() {
 		screenCovered = true
@@ -104,6 +131,14 @@ class MotionHandler: UIViewController {
         switch key {
         case "outputVolume":
             volumePressed = true
+
+            if CommandHandler.sharedInstance.randomNumber == PossibleMotions.pressVolume.rawValue {
+                
+                if let dictionary = change, let newValue = dictionary[.newKey] as? Float, newValue != CommandHandler.sharedInstance.originalVolume {
+                    MotionHandler.sharedInstance.manageSliderView(setVolume: true, newVolume: CommandHandler.sharedInstance.originalVolume)
+                }
+                adjustVolume()
+            }
             
         default:
             break
