@@ -17,8 +17,8 @@ class CommandAndFeedbackHandler {
 	
     static let sharedInstance = CommandAndFeedbackHandler()
     var commandTimer = Timer()
-    var timeInterval = 4.0
-    var oldTimeInterval = 4.0
+    var timeInterval:Double = 3.0
+    var oldTimeInterval:Double = 4.0
     
     var randomNumber: Int = -1
     var numberOfCommandsGiven = 0
@@ -42,7 +42,9 @@ class CommandAndFeedbackHandler {
         if randomNumber == PossibleMotions.coverScreen.rawValue {
             timeInterval = oldTimeInterval
         }
-        
+        if randomNumber == PossibleMotions.shake.rawValue {
+            timeInterval = oldTimeInterval
+        }
         randomNumber = generateRandomNumber(max: MotionHandler.sharedInstance.numberOfPossibleMotions)
         if randomNumber == PossibleMotions.pressVolume.rawValue {
             originalVolume = MotionHandler.sharedInstance.getCurrentVolume()
@@ -83,13 +85,13 @@ class CommandAndFeedbackHandler {
     }
     
     func endGame () {
+        MotionHandler.sharedInstance.stopDetecting()
         vibrate(motionValid: false)
         speak(text: "You lost. Hahahahaha!")
-        MotionHandler.sharedInstance.stopDetecting()
     }
     func initialize()  {
-        timeInterval = 4.0
-        oldTimeInterval = 4.0
+        timeInterval = 3
+        oldTimeInterval = 3.0
         
         randomNumber = -1
         numberOfCommandsGiven = 0
@@ -105,7 +107,7 @@ class CommandAndFeedbackHandler {
     //MaARK:- Private Functions
     private func generateRandomNumber(max: Int) -> Int {
         let generatedNumber = Int(arc4random_uniform(UInt32(max)))
-        return generatedNumber
+        return 7
     }
     private func speak (text: String) {
         let mySynthesizer = AVSpeechSynthesizer()

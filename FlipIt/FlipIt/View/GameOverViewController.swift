@@ -15,6 +15,7 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var startNewGame: UIButton!
     
     @IBAction func startNewGame(_ sender: Any) {
+        MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
         CommandAndFeedbackHandler.sharedInstance.initialize()
         MotionHandler.sharedInstance.initialize()
         let countdownViewController = CountDownViewController()

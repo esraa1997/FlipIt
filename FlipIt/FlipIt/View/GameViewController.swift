@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class GameViewController: UIViewController {
     //MARK:-Variables
@@ -18,11 +19,14 @@ class GameViewController: UIViewController {
     //MARK:- Standard UI functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideVolumeView()
         self.becomeFirstResponder()
         let (_, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
         commandLabel.text = commandText
         
         commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
+        
+        
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -45,13 +49,13 @@ class GameViewController: UIViewController {
         if actionValid {
             let (commandNumber, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
             commandLabel.text = commandText
-            if commandNumber == PossibleMotions.coverScreen.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 2 {
+            if commandNumber == PossibleMotions.coverScreen.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 2.0 {
                 CommandAndFeedbackHandler.sharedInstance.oldTimeInterval = CommandAndFeedbackHandler.sharedInstance.timeInterval
                 CommandAndFeedbackHandler.sharedInstance.timeInterval = 2.5
             }
-            if commandNumber == PossibleMotions.shake.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 2 {
+            if commandNumber == PossibleMotions.shake.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 1.5 {
                 CommandAndFeedbackHandler.sharedInstance.oldTimeInterval = CommandAndFeedbackHandler.sharedInstance.timeInterval
-                CommandAndFeedbackHandler.sharedInstance.timeInterval = 2.5
+                CommandAndFeedbackHandler.sharedInstance.timeInterval = 1.5
             }
         } else {
             CommandAndFeedbackHandler.sharedInstance.endGame()
@@ -65,4 +69,12 @@ class GameViewController: UIViewController {
         }
         commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
     }
+    
+    func hideVolumeView() {
+        let volumeView = MPVolumeView(frame: .zero)
+        volumeView.clipsToBounds = true
+        view.addSubview(volumeView)
+    }
+    
+    
 }
