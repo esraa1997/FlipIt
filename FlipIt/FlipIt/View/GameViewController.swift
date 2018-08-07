@@ -10,51 +10,59 @@ import UIKit
 
 class GameViewController: UIViewController {
     //MARK:-Variables
-    
-
     var commandTimer = Timer()
     
+    //MARK:- Outlets
     @IBOutlet weak var commandLabel: UILabel!
+    
+    //MARK:- Standard UI functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let (_, commandText) = CommandHandler.sharedInstance.giveCommand()
+        self.becomeFirstResponder()
+        let (_, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
         commandLabel.text = commandText
         
-        commandTimer = Timer.scheduledTimer(timeInterval: CommandHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
+        commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
     }
     
+    override var canBecomeFirstResponder: Bool {
+            return true
+    }
     
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            MotionHandler.sharedInstance.respondToShake()
+        }
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    
+    //MARK:- UI Functions
     @objc func manageGame() {
-        let actionValid = CommandHandler.sharedInstance.validateCommand()
+        let actionValid = CommandAndFeedbackHandler.sharedInstance.validateCommand()
         if actionValid {
-            let (commandNumber, commandText) = CommandHandler.sharedInstance.giveCommand()
+            let (commandNumber, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
             commandLabel.text = commandText
-            if commandNumber == PossibleMotions.coverScreen.rawValue && CommandHandler.sharedInstance.timeInterval < 2 {
-                CommandHandler.sharedInstance.oldTimeInterval = CommandHandler.sharedInstance.timeInterval
-                CommandHandler.sharedInstance.timeInterval = 2.5
+            if commandNumber == PossibleMotions.coverScreen.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 2 {
+                CommandAndFeedbackHandler.sharedInstance.oldTimeInterval = CommandAndFeedbackHandler.sharedInstance.timeInterval
+                CommandAndFeedbackHandler.sharedInstance.timeInterval = 2.5
+            }
+            if commandNumber == PossibleMotions.shake.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 2 {
+                CommandAndFeedbackHandler.sharedInstance.oldTimeInterval = CommandAndFeedbackHandler.sharedInstance.timeInterval
+                CommandAndFeedbackHandler.sharedInstance.timeInterval = 2.5
             }
         } else {
-            CommandHandler.sharedInstance.endGame()
+            CommandAndFeedbackHandler.sharedInstance.endGame()
             commandTimer.invalidate()
             let gameOverViewController = GameOverViewController()
             self.present(gameOverViewController, animated: false)
             return
         }
-        
-        if CommandHandler.sharedInstance.randomNumber != -1 {
+        if CommandAndFeedbackHandler.sharedInstance.randomNumber != -1 {
             commandTimer.invalidate()
         }
-        commandTimer = Timer.scheduledTimer(timeInterval: CommandHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
+        commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    
-
 }

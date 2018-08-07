@@ -14,7 +14,7 @@
 		62B686142117501C00A32203 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686122117501C00A32203 /* GameOverViewController.swift */; };
 		62B686152117501C00A32203 /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686132117501C00A32203 /* GameOverViewController.xib */; };
 		62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */; };
-		62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */; };
+		62F22BDD2111E4AA005F5CEE /* CommandAndFeedbackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDC2111E4AA005F5CEE /* CommandAndFeedbackHandler.swift */; };
 		62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDE2111E612005F5CEE /* StartPageViewController.swift */; };
 		62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F22BDF2111E612005F5CEE /* StartPageViewController.xib */; };
 		62F78875211058A3006077C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F78874211058A3006077C5 /* AppDelegate.swift */; };
@@ -34,7 +34,7 @@
 		62B686122117501C00A32203 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		62B686132117501C00A32203 /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleMotions.swift; sourceTree = "<group>"; };
-		62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHandler.swift; sourceTree = "<group>"; };
+		62F22BDC2111E4AA005F5CEE /* CommandAndFeedbackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndFeedbackHandler.swift; sourceTree = "<group>"; };
 		62F22BDE2111E612005F5CEE /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		62F22BDF2111E612005F5CEE /* StartPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartPageViewController.xib; sourceTree = "<group>"; };
 		62F78871211058A3006077C5 /* FlipIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +75,7 @@
 			children = (
 				62F7888E21105B83006077C5 /* MotionHandler.swift */,
 				62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */,
-				62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */,
+				62F22BDC2111E4AA005F5CEE /* CommandAndFeedbackHandler.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 				62B686142117501C00A32203 /* GameOverViewController.swift in Sources */,
 				62F78875211058A3006077C5 /* AppDelegate.swift in Sources */,
 				62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */,
-				62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */,
+				62F22BDD2111E4AA005F5CEE /* CommandAndFeedbackHandler.swift in Sources */,
 				62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */,
 				62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */,
 				62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */,

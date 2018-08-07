@@ -61,7 +61,6 @@ class StartPageViewController: UIViewController {
 //TODO:
 // proximity sensor disabled after game is over
 // volume listener disabled after game is over
-// fix UI and capital/ small
 // Vibration
 
 

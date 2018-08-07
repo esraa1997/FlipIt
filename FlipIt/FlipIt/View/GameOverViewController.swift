@@ -15,19 +15,18 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var startNewGame: UIButton!
     
     @IBAction func startNewGame(_ sender: Any) {
+        CommandAndFeedbackHandler.sharedInstance.initialize()
+        MotionHandler.sharedInstance.initialize()
         let countdownViewController = CountDownViewController()
         self.present(countdownViewController,animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //button
-        startNewGame.layer.borderColor = UIColor.black.cgColor
-        startNewGame.layer.borderWidth = 2.0
         
         
         //else
         newHighScoreLabel.isHidden = true
-        let score = CommandHandler.sharedInstance.score
+        let score = CommandAndFeedbackHandler.sharedInstance.score
         scoreLabel.text = String(score)
         let defaults = UserDefaults.standard
         let highestScore =  defaults.integer(forKey: "highestScore")
