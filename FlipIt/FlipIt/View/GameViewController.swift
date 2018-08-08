@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController {
     //MARK:-Variables
@@ -21,6 +22,7 @@ class GameViewController: UIViewController {
         commandLabel.text = commandText
         
         commandTimer = Timer.scheduledTimer(timeInterval: CommandHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
+		MusicHelper.sharedHelper.playBackgroundMusic()
         // Do any additional setup after loading the view.
     }
     
@@ -44,6 +46,7 @@ class GameViewController: UIViewController {
             return
         }
         CommandHandler.sharedInstance.manageSpeedAndLevel()
+		
         
         if CommandHandler.sharedInstance.randomNumber != -1 {
             commandTimer.invalidate()
@@ -56,7 +59,4 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    
-
 }

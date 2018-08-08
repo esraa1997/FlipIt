@@ -13,6 +13,10 @@ import MediaPlayer
 class CommandHandler {
     
     //MARK:-Variables
+	enum vibrationStyle {
+		case light
+		case heavy
+	}
 	
     static let sharedInstance = CommandHandler()
     var commandTimer = Timer()
@@ -37,12 +41,11 @@ class CommandHandler {
         commandTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(validateCommand), userInfo: nil, repeats: true)
     }
     
-    @objc func validateCommand() -> Bool {
+	@objc func validateCommand() -> Bool {
         let commandIsPressVolume = (randomNumber == PossibleMotions.pressVolume.rawValue)
         let commandIsCoverScreen = (randomNumber == PossibleMotions.coverScreen.rawValue)
         
         // Test whether given command is performed correctly
-
             if MotionHandler.sharedInstance.motionsPerformed.contains(randomNumber)  {
                 score += scoreIncrement
                 print(score)
@@ -106,9 +109,24 @@ class CommandHandler {
         speak(text: MotionHandler.sharedInstance.motion)
     }
     func endGame () {
+		vibration(style: .heavy)
+		vibration(style: .heavy)
         speak(text: "You lost. Hahahahaha!")
         MotionHandler.sharedInstance.stopDetecting()
     }
+	private func vibration (style : vibrationStyle) {
+		
+//		if style == .light
+//		{
+//			let generator = UIImpactFeedbackGenerator(style: .light)
+//			generator.impactOccurred()
+//		}
+//		if style == .heavy {
+//			let generator = UIImpactFeedbackGenerator(style: .heavy)
+//			generator.impactOccurred()
+//		}
+		
+	}
     func manageSpeedAndLevel () {
         if numberOfCommandsPerformedCorrectly % 3 == 0 {
             scoreIncrement += 1

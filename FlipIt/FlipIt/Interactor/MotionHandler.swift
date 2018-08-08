@@ -29,6 +29,7 @@ class MotionHandler: UIViewController {
     
     let audioSession = AVAudioSession.sharedInstance()
     var originalVolume:Float = 0
+	
     
     //MARK:- Public Functions
     func startDetection(updateInterval:Double , proximitySensorEnabled:Bool){
@@ -45,8 +46,11 @@ class MotionHandler: UIViewController {
         do { try audioSession.setActive(true) }
         catch { print("\(error)") }
     }
+	
     func stopDetecting() {
         motionManager.stopDeviceMotionUpdates()
+		detectProximity(false)
+		NotificationCenter.default.removeObserver(self)
     }
     
     //MARK:- Private Functions
@@ -57,23 +61,18 @@ class MotionHandler: UIViewController {
 			if let data = accelerometerData {
 				if data.acceleration.x < -0.8 && data.acceleration.x > -1.2 {
 					self.motionsPerformed.append(PossibleMotions.faceLeft.rawValue)
-//                    print("left")
 				}
 				if data.acceleration.x > 0.8 && data.acceleration.x < 1.2 {
 					self.motionsPerformed.append(PossibleMotions.faceRight.rawValue)
-//                    print("right")
 				}
 				if data.acceleration.z < -0.8 && data.acceleration.z > -1.2 {
 					self.motionsPerformed.append(PossibleMotions.faceUp.rawValue)
-//                    print("Up")
 				}
 				if data.acceleration.z > 0.8 && data.acceleration.z < 1.2 {
 					self.motionsPerformed.append(PossibleMotions.faceDown.rawValue)
-//                    print("Down")
 				}
 				if data.acceleration.y < -0.8 && data.acceleration.y > -1.2 {
 					self.motionsPerformed.append(PossibleMotions.turnTowardsFace.rawValue)
-//                    print("Face")
 				}
                 
                 if self.motionsPerformed.count == 4 {
@@ -98,7 +97,7 @@ class MotionHandler: UIViewController {
     @objc private func proximityChanged() {
 		screenCovered = true
     }
-    
+
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let key = keyPath else { return }
         switch key {
