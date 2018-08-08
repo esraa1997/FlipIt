@@ -14,7 +14,6 @@ class CommandsTutorialViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var label: UILabel!
     
     let commands = String()
-    for
     let descbribtions = ["responded to your email with a long text", "wants to buy your house with monoploy money"]
     let images = [#imageLiteral(resourceName: "iphone-6-drawing-65"), #imageLiteral(resourceName: "iphone-6-drawing-65")]
     
