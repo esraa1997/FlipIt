@@ -13,8 +13,7 @@ class tutorialViewController: UIViewController {
     
     @IBAction func seeCommands(_ sender: Any) {
         let commandsTutorialViewController =  CommandsTutorialViewController(nibName: "CommandsTutorialViewController", bundle: nil)
-        self.navigationController?.pushViewController(commandsTutorialViewController, animated: true);
-
+        self.navigationController?.pushViewController(commandsTutorialViewController, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

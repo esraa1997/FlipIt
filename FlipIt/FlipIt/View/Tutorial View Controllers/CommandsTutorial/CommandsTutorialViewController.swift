@@ -13,9 +13,9 @@ class CommandsTutorialViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var label: UILabel!
     
-    let commands = String()
-    let descbribtions = ["responded to your email with a long text", "wants to buy your house with monoploy money"]
-    let images = [#imageLiteral(resourceName: "iphone-6-drawing-65"), #imageLiteral(resourceName: "iphone-6-drawing-65")]
+    var commands = [String]()
+    var descbribtions = [String]()
+    var images = [UIImage]()
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -23,6 +23,13 @@ class CommandsTutorialViewController: UIViewController, UITableViewDelegate, UIT
         self.title = "My Commands"
         setTableView(cellName: "CommandsTutorialCell")
         label.text = "Below is an illustration of what the phone's orientation should be like after each command"
+        
+        for i in 0 ..< MotionHandler.sharedInstance.numberOfPossibleMotions {
+            MotionHandler.sharedInstance.possibleMotion = PossibleMotions(rawValue: i)
+            commands.append(MotionHandler.sharedInstance.motionName)
+            descbribtions.append(MotionHandler.sharedInstance.motionDescribtion)
+            images.append(#imageLiteral(resourceName: "iphone-6-drawing-65"))
+        }
         // Do any additional setup after loading the view.®
     }
     override func didReceiveMemoryWarning() {
@@ -46,6 +53,7 @@ class CommandsTutorialViewController: UIViewController, UITableViewDelegate, UIT
         //commandDiscribtionLabel
         cell.commandDiscribtionLabel.numberOfLines = 3
         cell.commandDiscribtionLabel.text = descbribtions[indexPath.item]
+        cell.commandNameLabel.text = commands[indexPath.item]
         
         //Image:
         cell.commandImage.image = images[indexPath.item]

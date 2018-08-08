@@ -52,7 +52,7 @@ class CommandAndFeedbackHandler {
         speakCommand(commandNumber: randomNumber)
         numberOfCommandsGiven += 1
         MotionHandler.sharedInstance.possibleMotion = PossibleMotions(rawValue: randomNumber)
-        return (randomNumber, MotionHandler.sharedInstance.motion)
+        return (randomNumber, MotionHandler.sharedInstance.motionName)
     }
     
     @objc func validateCommand() -> Bool {
@@ -120,7 +120,7 @@ class CommandAndFeedbackHandler {
     }
     private func speakCommand (commandNumber: Int) {
         MotionHandler.sharedInstance.possibleMotion = PossibleMotions(rawValue: commandNumber)
-        speak(text: MotionHandler.sharedInstance.motion)
+        speak(text: MotionHandler.sharedInstance.motionName)
     }
     private func handleSuccess () {
         vibrate(motionValid: true)

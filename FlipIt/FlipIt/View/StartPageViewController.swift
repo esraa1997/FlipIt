@@ -28,7 +28,7 @@ class StartPageViewController: UIViewController {
             MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
             let countDownViewController = CountDownViewController()
             self.present(countDownViewController, animated: false)
-
+            
         }
     }
     @IBAction func options(_ sender: Any) {
@@ -60,9 +60,9 @@ class StartPageViewController: UIViewController {
             print ("muted")
             Mute.shared.isPaused = true
         }
-
+        
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,25 +81,18 @@ class StartPageViewController: UIViewController {
             MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
             let countDownViewController = CountDownViewController()
             self.present(countDownViewController, animated: false)
-
+            
         }))
         alert.addAction(UIAlertAction(title: "I want to keep it muted", style: UIAlertActionStyle.default, handler: { _ in
             alert.dismiss(animated: true, completion: nil)
             MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
             let countDownViewController = CountDownViewController()
             self.present(countDownViewController, animated: false)
-
+            
         }))
         
         self.present(alert, animated: true, completion: nil)
     }
-
-    
-    
-    
-    
-   
-    
 }
 
 //TODO:
