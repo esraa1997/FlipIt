@@ -119,7 +119,6 @@ class MotionHandler: UIViewController {
             volumePressed = true
             
             if CommandAndFeedbackHandler.sharedInstance.randomNumber == PossibleMotions.pressVolume.rawValue {
-                
                 if let dictionary = change, let newValue = dictionary[.newKey] as? Float, newValue != CommandAndFeedbackHandler.sharedInstance.originalVolume {
                     MotionHandler.sharedInstance.manageVolumeSliderView(setVolume: true, newVolume: CommandAndFeedbackHandler.sharedInstance.originalVolume)
                 }
