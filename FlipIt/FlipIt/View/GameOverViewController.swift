@@ -23,9 +23,6 @@ class GameOverViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        //else
         newHighScoreLabel.isHidden = true
         let score = CommandAndFeedbackHandler.sharedInstance.score
         scoreLabel.text = String(score)

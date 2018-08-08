@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartPageViewController" customModule="FlipIt" customModuleProvider="target">
             <connections>
-                <outlet property="myScores" destination="TaK-iK-6UP" id="jgV-3d-NWG"/>
+                <outlet property="options" destination="TaK-iK-6UP" id="jgV-3d-NWG"/>
                 <outlet property="start" destination="mH5-9u-MZI" id="vI7-sW-DDS"/>
                 <outlet property="titleLabel" destination="Mee-2X-xQi" id="T8x-P8-fkw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="b6d-12-IEk"/>
@@ -44,7 +40,7 @@
                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="myScores:" destination="-1" eventType="touchUpInside" id="uot-OI-moe"/>
+                        <action selector="options:" destination="-1" eventType="touchUpInside" id="uot-OI-moe"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flip It" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mee-2X-xQi">

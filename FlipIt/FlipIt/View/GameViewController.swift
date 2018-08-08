@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         hideVolumeView()
         self.becomeFirstResponder()
+        CommandAndFeedbackHandler.sharedInstance.initialize()
         let (_, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
         commandLabel.text = commandText
         
