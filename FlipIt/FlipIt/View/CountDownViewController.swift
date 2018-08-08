@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class CountDownViewController: UIViewController {
     
@@ -19,10 +20,10 @@ class CountDownViewController: UIViewController {
     
     //MARK:- Stadards functions
     override func viewDidLoad() {
+        hideVolumeView()
         super.viewDidLoad()
         countdownLabel.text = String(counter)
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +39,15 @@ class CountDownViewController: UIViewController {
             countdownLabel.text = String(counter)
         } else {
             countdownTimer.invalidate()
-            
             let gameViewController = GameViewController()
             self.present(gameViewController, animated: false)
-            
-            
         }
+    }
+    
+    func hideVolumeView()  {
+        let volumeView = MPVolumeView(frame: .zero)
+        volumeView.clipsToBounds = true
+        view.addSubview(volumeView)
     }
 
 }

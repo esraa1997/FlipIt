@@ -14,21 +14,20 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var newHighScoreLabel: UILabel!
     @IBOutlet weak var startNewGame: UIButton!
     
-    
     @IBAction func startNewGame(_ sender: Any) {
+        MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
+        CommandAndFeedbackHandler.sharedInstance.initialize()
+        MotionHandler.sharedInstance.initialize()
         let countdownViewController = CountDownViewController()
         self.present(countdownViewController,animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //button
-        startNewGame.layer.borderColor = UIColor.black.cgColor
-        startNewGame.layer.borderWidth = 2.0
         
         
         //else
         newHighScoreLabel.isHidden = true
-        let score = CommandHandler.sharedInstance.score
+        let score = CommandAndFeedbackHandler.sharedInstance.score
         scoreLabel.text = String(score)
         let defaults = UserDefaults.standard
         let highestScore =  defaults.integer(forKey: "highestScore")
@@ -36,24 +35,10 @@ class GameOverViewController: UIViewController {
             defaults.set(score, forKey: "highestScore")
             newHighScoreLabel.isHidden = false
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

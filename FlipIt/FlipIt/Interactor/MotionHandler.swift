@@ -10,12 +10,14 @@
 import UIKit
 import CoreMotion
 import AVFoundation
+import MediaPlayer
 
 class MotionHandler: UIViewController {
     //MARK:- Variables
     static let sharedInstance = MotionHandler()
 	var screenCovered = false
     var volumePressed = false
+    var phoneShoken = false
     
     var motionManager = CMMotionManager()
     
@@ -24,64 +26,67 @@ class MotionHandler: UIViewController {
         return possibleMotion!.motions
     }
     
-    var numberOfPossibleMotions = 7 //TODO: change it as Sandra adds her stuff
+    var numberOfPossibleMotions = 8 //TODO: change it as Sandra adds her stuff
     var motionsPerformed = [0,0,0,0]
     
     let audioSession = AVAudioSession.sharedInstance()
-    var originalVolume:Float = 0
-	
     
     //MARK:- Public Functions
     func startDetection(updateInterval:Double , proximitySensorEnabled:Bool){
         detectMotion(updateInterval: updateInterval)
         detectProximity(proximitySensorEnabled)
-        
-        //Volume Control
-        let audioSession = AVAudioSession.sharedInstance()
-        originalVolume = audioSession.outputVolume
-        if originalVolume == 1 {
-            originalVolume = 0.99
-        }
-        audioSession.addObserver (self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
-        do { try audioSession.setActive(true) }
-        catch { print("\(error)") }
+        detectVolume()
     }
-	
     func stopDetecting() {
         motionManager.stopDeviceMotionUpdates()
-		detectProximity(false)
-		NotificationCenter.default.removeObserver(self)
+        disableProximityDetection()
+        audioSession.removeObserver(self, forKeyPath: "outputVolume")
+    }
+    
+    func getCurrentVolume () -> Float{
+        do { try audioSession.setActive(true) }
+        catch { print("\(error)") }
+        
+        return AVAudioSession.sharedInstance().outputVolume
+    }
+    func respondToShake() {
+        phoneShoken = true
+    }
+    
+    func initialize () {
+        screenCovered = false
+        volumePressed = false
+        phoneShoken = false
     }
     
     //MARK:- Private Functions
-	private func detectMotion(updateInterval:Double) {
-		let queue = OperationQueue.main
-		detectProximity(true)
-		motionManager.startAccelerometerUpdates(to: queue) { (accelerometerData, error) in
-			if let data = accelerometerData {
-				if data.acceleration.x < -0.8 && data.acceleration.x > -1.2 {
-					self.motionsPerformed.append(PossibleMotions.faceLeft.rawValue)
-				}
-				if data.acceleration.x > 0.8 && data.acceleration.x < 1.2 {
-					self.motionsPerformed.append(PossibleMotions.faceRight.rawValue)
-				}
-				if data.acceleration.z < -0.8 && data.acceleration.z > -1.2 {
-					self.motionsPerformed.append(PossibleMotions.faceUp.rawValue)
-				}
-				if data.acceleration.z > 0.8 && data.acceleration.z < 1.2 {
-					self.motionsPerformed.append(PossibleMotions.faceDown.rawValue)
-				}
-				if data.acceleration.y < -0.8 && data.acceleration.y > -1.2 {
-					self.motionsPerformed.append(PossibleMotions.turnTowardsFace.rawValue)
-				}
-                
+    private func detectMotion(updateInterval:Double) {
+        let queue = OperationQueue.main
+        detectProximity(true)
+        motionManager.startAccelerometerUpdates(to: queue) { (accelerometerData, error) in
+            if let data = accelerometerData {
+                if data.acceleration.x < -0.8 && data.acceleration.x > -1.2 {
+                    self.motionsPerformed.append(PossibleMotions.faceLeft.rawValue)
+                }
+                if data.acceleration.x > 0.8 && data.acceleration.x < 1.2 {
+                    self.motionsPerformed.append(PossibleMotions.faceRight.rawValue)
+                }
+                if data.acceleration.z < -0.8 && data.acceleration.z > -1.2 {
+                    self.motionsPerformed.append(PossibleMotions.faceUp.rawValue)
+                }
+                if data.acceleration.z > 0.8 && data.acceleration.z < 1.2 {
+                    self.motionsPerformed.append(PossibleMotions.faceDown.rawValue)
+                }
+                if data.acceleration.y < -0.8 && data.acceleration.y > -1.2 {
+                    self.motionsPerformed.append(PossibleMotions.turnTowardsFace.rawValue)
+                }
                 if self.motionsPerformed.count == 4 {
                     self.motionsPerformed.remove(at: 0)
                 }
-			}
-		}
-	}
-    
+            }
+        }
+    }
+    //MARK:- Proximity
     private func detectProximity(_ enabled: Bool) {
         let device = UIDevice.current
         device.isProximityMonitoringEnabled = enabled
@@ -92,22 +97,59 @@ class MotionHandler: UIViewController {
             print("proximity sensor not enabled")
         }
     }
-    
-
     @objc private func proximityChanged() {
-		screenCovered = true
+        screenCovered = true
     }
-
+    private func disableProximityDetection() {
+        NotificationCenter.default.removeObserver(self)
+        
+        let device = UIDevice.current
+        device.isProximityMonitoringEnabled = false
+    }
+    
+    //MARK:- Volume:
+    private func detectVolume () {
+        adjustVolume()
+        audioSession.addObserver (self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+    }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let key = keyPath else { return }
         switch key {
         case "outputVolume":
             volumePressed = true
             
+            if CommandAndFeedbackHandler.sharedInstance.randomNumber == PossibleMotions.pressVolume.rawValue {
+                
+                if let dictionary = change, let newValue = dictionary[.newKey] as? Float, newValue != CommandAndFeedbackHandler.sharedInstance.originalVolume {
+                    MotionHandler.sharedInstance.manageVolumeSliderView(setVolume: true, newVolume: CommandAndFeedbackHandler.sharedInstance.originalVolume)
+                }
+            }
+            adjustVolume()
         default:
             break
         }
     }
-    
+    private func manageVolumeSliderView(setVolume: Bool, newVolume: Float) {
+        let volumeView = MPVolumeView(frame: CGRect.init(x: self.view.frame.maxX, y: self.view.frame.maxY, width: 0, height: 0)).subviews.first { (aView) -> Bool in
+            return NSStringFromClass(aView.classForCoder) == "MPVolumeSlider" ? true : false
+            } as? UISlider
+        guard volumeView != nil else { return }
+        
+        if setVolume {
+            volumeView?.setValue(newVolume, animated: false)
+        }
+        volumeView?.isHidden = true
+    }
+    private func adjustVolume() {
+        do { try audioSession.setActive(true) }
+        catch { print("ERROR: \(error)") }
+        
+        let originalVolume = AVAudioSession.sharedInstance().outputVolume
+        if originalVolume == 1 {
+            self.manageVolumeSliderView(setVolume: true, newVolume: 0.9375)
+        } else if originalVolume == 0 {
+            self.manageVolumeSliderView(setVolume: true, newVolume: 0.125)
+        }
+    }
 }
 

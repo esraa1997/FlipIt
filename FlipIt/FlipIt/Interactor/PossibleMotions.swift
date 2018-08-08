@@ -15,7 +15,7 @@ enum PossibleMotions: Int {
 	case faceUp = 4
 	case faceDown = 5
     case pressVolume = 6
-	case shake = 7
+    case shake = 7
     
     var motions: String {
         switch self {
@@ -26,15 +26,15 @@ enum PossibleMotions: Int {
         case .turnTowardsFace:
             return "Face"
         case .coverScreen:
-            return "cover \nScreen"
+            return "Cover \nScreen"
 		case .faceUp:
 			return "Up"
 		case .faceDown:
-			return "down"
+			return "Down"
         case.pressVolume:
-            return "volume"
-		case.shake:
-			return "shake"
+            return "Volume"
+        case .shake:
+            return "Shake"
         default:
             return "no Motion"
             
