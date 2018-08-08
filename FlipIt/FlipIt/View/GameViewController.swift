@@ -18,14 +18,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var commandLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
         let (_, commandText) = CommandHandler.sharedInstance.giveCommand()
-=======
-        hideVolumeView()
-        self.becomeFirstResponder()
-        CommandAndFeedbackHandler.sharedInstance.initialize()
-        let (_, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
->>>>>>> d1178cb8ce708fb9c041e534468e4c3650e14f34
         commandLabel.text = commandText
         
         commandTimer = Timer.scheduledTimer(timeInterval: CommandHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)

@@ -12,39 +12,24 @@ import MediaPlayer
 import AudioToolbox
 
 class CommandAndFeedbackHandler {
+    
+    //MARK:-Variables
+	
     static let sharedInstance = CommandAndFeedbackHandler()
-    
-    //MARK:- Variables
     var commandTimer = Timer()
-
-    var timeInterval = 0.0
-    var oldTimeInterval = 0.0
+    var timeInterval:Double = 3.0
+    var oldTimeInterval:Double = 4.0
     
-    var randomNumber = 0
+    var randomNumber: Int = -1
     var numberOfCommandsGiven = 0
     var numberOfCommandsPerformedCorrectly = 0
     
     var score = 0
-    var scoreIncrement = 0
-    var level = 0
-    
+    var scoreIncrement = 1
+    var level = 1
     var originalVolume: Float = 0
     
     //MaARK:- Public Functions
-    func initialize()  {
-        timeInterval = Constants.defaultTimeInterval
-        oldTimeInterval = Constants.defaultTimeInterval
-        
-        randomNumber = Constants.defaultRandomNumber
-        numberOfCommandsGiven = Constants.defaultRandomNumber
-        numberOfCommandsPerformedCorrectly = Constants.defaultNumberOfCommandsPerformedCorrectly
-        
-        score = Constants.defaultScore
-        scoreIncrement = Constants.defaultScoreIncrement
-        level = Constants.defaultLevel
-        
-        originalVolume = Constants.defaultOriginalVolume
-    }
     func updateTimer(multiplier: Double)  {
         if randomNumber != -1 {
             commandTimer.invalidate()
@@ -104,12 +89,25 @@ class CommandAndFeedbackHandler {
         vibrate(motionValid: false)
         speak(text: "You lost. Hahahahaha!")
     }
-
+    func initialize()  {
+        timeInterval = 3
+        oldTimeInterval = 3.0
+        
+        randomNumber = -1
+        numberOfCommandsGiven = 0
+        numberOfCommandsPerformedCorrectly = 0
+        
+        score = 0
+        scoreIncrement = 1
+        level = 1
+        
+        originalVolume = 0
+    }
     
     //MaARK:- Private Functions
     private func generateRandomNumber(max: Int) -> Int {
         let generatedNumber = Int(arc4random_uniform(UInt32(max)))
-        return generatedNumber
+        return 7
     }
     private func speak (text: String) {
         let mySynthesizer = AVSpeechSynthesizer()
@@ -143,12 +141,9 @@ class CommandAndFeedbackHandler {
             
             if device == 0 {
                 if motionValid {
-                   AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                   return
                 } else {
                     AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    }
                 }
             }
             
