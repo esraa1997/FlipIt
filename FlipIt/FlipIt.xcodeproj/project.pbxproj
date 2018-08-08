@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		317D55C3BFC9995F4E10E09F /* libPods-FlipIt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D022A3DF810C621433C9D4 /* libPods-FlipIt.a */; };
+		628773D4211B1B6F00218B66 /* tutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628773CD211B1B6F00218B66 /* tutorialViewController.swift */; };
+		628773D5211B1B6F00218B66 /* tutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628773CE211B1B6F00218B66 /* tutorialViewController.xib */; };
+		628773D6211B1B6F00218B66 /* CommandsTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628773D0211B1B6F00218B66 /* CommandsTutorialViewController.xib */; };
+		628773D7211B1B6F00218B66 /* CommandsTutorialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628773D1211B1B6F00218B66 /* CommandsTutorialCell.xib */; };
+		628773D8211B1B6F00218B66 /* CommandsTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628773D2211B1B6F00218B66 /* CommandsTutorialCell.swift */; };
+		628773D9211B1B6F00218B66 /* CommandsTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628773D3211B1B6F00218B66 /* CommandsTutorialViewController.swift */; };
 		62B686062116F3D300A32203 /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686042116F3D300A32203 /* CountDownViewController.swift */; };
 		62B686072116F3D300A32203 /* CountDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686052116F3D300A32203 /* CountDownViewController.xib */; };
 		62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686082116FC7C00A32203 /* GameViewController.swift */; };
@@ -29,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E6C41124AC7527BAE6151F2 /* Pods-FlipIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt.debug.xcconfig"; sourceTree = "<group>"; };
+		628773CD211B1B6F00218B66 /* tutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorialViewController.swift; sourceTree = "<group>"; };
+		628773CE211B1B6F00218B66 /* tutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tutorialViewController.xib; sourceTree = "<group>"; };
+		628773D0211B1B6F00218B66 /* CommandsTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandsTutorialViewController.xib; sourceTree = "<group>"; };
+		628773D1211B1B6F00218B66 /* CommandsTutorialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandsTutorialCell.xib; sourceTree = "<group>"; };
+		628773D2211B1B6F00218B66 /* CommandsTutorialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsTutorialCell.swift; sourceTree = "<group>"; };
+		628773D3211B1B6F00218B66 /* CommandsTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsTutorialViewController.swift; sourceTree = "<group>"; };
 		62B686042116F3D300A32203 /* CountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewController.swift; sourceTree = "<group>"; };
 		62B686052116F3D300A32203 /* CountDownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountDownViewController.xib; sourceTree = "<group>"; };
 		62B686082116FC7C00A32203 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +65,8 @@
 		62F788B62110B752006077C5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8AAE4A6211AE69D007F3BB2 /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
 		A8AAE4A9211AECD6007F3BB2 /* Beats-bongo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Beats-bongo.mp3"; path = "../../../../../../Downloads/Beats-bongo.mp3"; sourceTree = "<group>"; };
+		C45B05791BCCEE4CF21D8C8D /* Pods-FlipIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt.release.xcconfig"; sourceTree = "<group>"; };
+		C7D022A3DF810C621433C9D4 /* libPods-FlipIt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlipIt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +76,34 @@
 			files = (
 				62F788B72110B752006077C5 /* AVFoundation.framework in Frameworks */,
 				62F7888D211058F9006077C5 /* CoreMotion.framework in Frameworks */,
+				317D55C3BFC9995F4E10E09F /* libPods-FlipIt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		628773CC211B1B6F00218B66 /* Tutorial View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				628773CD211B1B6F00218B66 /* tutorialViewController.swift */,
+				628773CE211B1B6F00218B66 /* tutorialViewController.xib */,
+				628773CF211B1B6F00218B66 /* CommandsTutorial */,
+			);
+			path = "Tutorial View Controllers";
+			sourceTree = "<group>";
+		};
+		628773CF211B1B6F00218B66 /* CommandsTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				628773D0211B1B6F00218B66 /* CommandsTutorialViewController.xib */,
+				628773D1211B1B6F00218B66 /* CommandsTutorialCell.xib */,
+				628773D2211B1B6F00218B66 /* CommandsTutorialCell.swift */,
+				628773D3211B1B6F00218B66 /* CommandsTutorialViewController.swift */,
+			);
+			path = CommandsTutorial;
+			sourceTree = "<group>";
+		};
 		62F22BD52111DF04005F5CEE /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +126,7 @@
 		62F22BD92111E0BD005F5CEE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				628773CC211B1B6F00218B66 /* Tutorial View Controllers */,
 				62F22BDE2111E612005F5CEE /* StartPageViewController.swift */,
 				62F22BDF2111E612005F5CEE /* StartPageViewController.xib */,
 				62B686042116F3D300A32203 /* CountDownViewController.swift */,
@@ -106,6 +145,7 @@
 				62F78873211058A3006077C5 /* FlipIt */,
 				62F78872211058A3006077C5 /* Products */,
 				62F78889211058DE006077C5 /* Frameworks */,
+				8AD6507CE1A9976D2B0B4FA5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,8 +178,18 @@
 				62F788B62110B752006077C5 /* AVFoundation.framework */,
 				62F7888C211058F9006077C5 /* CoreMotion.framework */,
 				62F7888A211058DE006077C5 /* CoreData.framework */,
+				C7D022A3DF810C621433C9D4 /* libPods-FlipIt.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AD6507CE1A9976D2B0B4FA5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E6C41124AC7527BAE6151F2 /* Pods-FlipIt.debug.xcconfig */,
+				C45B05791BCCEE4CF21D8C8D /* Pods-FlipIt.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A8AAE4A8211AECB6007F3BB2 /* Songs */ = {
@@ -157,9 +207,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62F78886211058A4006077C5 /* Build configuration list for PBXNativeTarget "FlipIt" */;
 			buildPhases = (
+				5ABDD03AD65E7BB1804E004D /* [CP] Check Pods Manifest.lock */,
 				62F7886D211058A3006077C5 /* Sources */,
 				62F7886E211058A3006077C5 /* Frameworks */,
 				62F7886F211058A3006077C5 /* Resources */,
+				D306E36DE512664631CD5720 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,16 +261,58 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8AAE4AA211AECD6007F3BB2 /* Beats-bongo.mp3 in Resources */,
+				628773D7211B1B6F00218B66 /* CommandsTutorialCell.xib in Resources */,
 				62B686072116F3D300A32203 /* CountDownViewController.xib in Resources */,
+				628773D6211B1B6F00218B66 /* CommandsTutorialViewController.xib in Resources */,
 				62F78882211058A4006077C5 /* LaunchScreen.storyboard in Resources */,
 				62F7887F211058A4006077C5 /* Assets.xcassets in Resources */,
 				62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */,
 				62B686152117501C00A32203 /* GameOverViewController.xib in Resources */,
+				628773D5211B1B6F00218B66 /* tutorialViewController.xib in Resources */,
 				62B6860B2116FC7C00A32203 /* GameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5ABDD03AD65E7BB1804E004D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlipIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D306E36DE512664631CD5720 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Mute/Mute.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Mute.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		62F7886D211058A3006077C5 /* Sources */ = {
@@ -228,11 +322,14 @@
 				62B686142117501C00A32203 /* GameOverViewController.swift in Sources */,
 				62F78875211058A3006077C5 /* AppDelegate.swift in Sources */,
 				62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */,
+				628773D8211B1B6F00218B66 /* CommandsTutorialCell.swift in Sources */,
 				62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */,
 				62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */,
+				628773D9211B1B6F00218B66 /* CommandsTutorialViewController.swift in Sources */,
 				A8AAE4A7211AE69D007F3BB2 /* MusicHelper.swift in Sources */,
 				62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */,
 				62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */,
+				628773D4211B1B6F00218B66 /* tutorialViewController.swift in Sources */,
 				62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */,
 				62B686062116F3D300A32203 /* CountDownViewController.swift in Sources */,
 			);
@@ -368,6 +465,7 @@
 		};
 		62F78887211058A4006077C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E6C41124AC7527BAE6151F2 /* Pods-FlipIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -387,6 +485,7 @@
 		};
 		62F78888211058A4006077C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C45B05791BCCEE4CF21D8C8D /* Pods-FlipIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
