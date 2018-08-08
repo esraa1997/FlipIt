@@ -88,7 +88,7 @@ class CommandAndFeedbackHandler {
         MotionHandler.sharedInstance.stopDetecting()
         vibrate(motionValid: false)
         speak(text: "You lost. Hahahahaha!")
-        MusicHelper.sharedHelper.audioPlayer?.stop()
+		MusicHelper.sharedHelper.audioPlayer?.stop()
     }
     func initialize()  {
         timeInterval = Constants.defaultTimeInterval
