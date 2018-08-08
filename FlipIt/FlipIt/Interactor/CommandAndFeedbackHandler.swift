@@ -107,7 +107,7 @@ class CommandAndFeedbackHandler {
     //MaARK:- Private Functions
     private func generateRandomNumber(max: Int) -> Int {
         let generatedNumber = Int(arc4random_uniform(UInt32(max)))
-        return 7
+        return generatedNumber
     }
     private func speak (text: String) {
         let mySynthesizer = AVSpeechSynthesizer()

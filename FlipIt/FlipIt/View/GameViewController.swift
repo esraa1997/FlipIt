@@ -45,7 +45,6 @@ class GameViewController: UIViewController {
             self.present(gameOverViewController, animated: false)
             return
         }
-        CommandAndFeedbackHandler.sharedInstance.manageSpeedAndLevel()
 		
         
         if CommandAndFeedbackHandler.sharedInstance.randomNumber != -1 {
