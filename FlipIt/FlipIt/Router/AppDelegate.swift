@@ -15,18 +15,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //MARK:- UserDefaults
+        let defaults = UserDefaults.standard
+        
+        //High score
+        let highScore = ["highestScore" : 0]
+        defaults.register(defaults: highScore)
+        
+        //First time opening the game
+        let firstTimeOpeningTheGame = ["firstTime": true]
+        defaults.register(defaults: firstTimeOpeningTheGame)
+        
+        //MARK:- Navigation
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        //Navigation View Controller
+        
+        
         var firstTime =  defaults.bool(forKey: "firstTime")
-//        if firstTime {
-//            firstTime = false
-//            let tutorialMainPage = tutorialViewController()
-//            let navigationViewController = UINavigationController(rootViewController: tutorialMainPage)
-//            window?.rootViewController = navigationViewController
-//        } else {
-            let presenter = StartPageViewController(nibName: "StartPageViewController", bundle: nil)
+        if firstTime {
+            firstTime = false
+            let tutorialMainPage = tutorialViewController()
+            let navigationViewController = UINavigationController(rootViewController: tutorialMainPage)
+            window?.rootViewController = navigationViewController
+        } else {
+            let presenter = tutorialViewController(nibName: "tutorialViewController", bundle: nil)
             window?.rootViewController = presenter
-//        }
+        }
         window?.makeKeyAndVisible()
         return true
     }
