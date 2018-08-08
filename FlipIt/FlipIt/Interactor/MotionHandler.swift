@@ -13,6 +13,7 @@ import AVFoundation
 import MediaPlayer
 
 class MotionHandler: UIViewController {
+    
     //MARK:- Variables
     static let sharedInstance = MotionHandler()
 	var screenCovered = false
@@ -130,7 +131,7 @@ class MotionHandler: UIViewController {
         }
     }
     private func manageVolumeSliderView(setVolume: Bool, newVolume: Float) {
-        let volumeView = MPVolumeView(frame: CGRect.init(x: self.view.frame.maxX, y: self.view.frame.maxY, width: 0, height: 0)).subviews.first { (aView) -> Bool in
+        let volumeView = MPVolumeView().subviews.first { (aView) -> Bool in
             return NSStringFromClass(aView.classForCoder) == "MPVolumeSlider" ? true : false
             } as? UISlider
         guard volumeView != nil else { return }

@@ -1,0 +1,16 @@
+PODS:
+  - Mute (0.2.2)
+
+DEPENDENCIES:
+  - Mute
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Mute
+
+SPEC CHECKSUMS:
+  Mute: c3707721d5bb1701ae659f1f50937c240184add1
+
+PODFILE CHECKSUM: 202ebfaeb4ff8d4ba44432af72e03348d6c72211
+
+COCOAPODS: 1.5.3

@@ -13,10 +13,17 @@
 		62B6860B2116FC7C00A32203 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686092116FC7C00A32203 /* GameViewController.xib */; };
 		62B686142117501C00A32203 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B686122117501C00A32203 /* GameOverViewController.swift */; };
 		62B686152117501C00A32203 /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B686132117501C00A32203 /* GameOverViewController.xib */; };
+		62C36141211AED4C00305F1C /* CommandsTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C3613D211AED4C00305F1C /* CommandsTutorialCell.swift */; };
+		62C36142211AED4C00305F1C /* CommandsTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C3613E211AED4C00305F1C /* CommandsTutorialViewController.xib */; };
+		62C36143211AED4C00305F1C /* CommandsTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C3613F211AED4C00305F1C /* CommandsTutorialViewController.swift */; };
+		62C36144211AED4C00305F1C /* CommandsTutorialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C36140211AED4C00305F1C /* CommandsTutorialCell.xib */; };
 		62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */; };
 		62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */; };
 		62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F22BDE2111E612005F5CEE /* StartPageViewController.swift */; };
 		62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F22BDF2111E612005F5CEE /* StartPageViewController.xib */; };
+		62F499E62119D8560052747D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F499E52119D8560052747D /* Constants.swift */; };
+		62F4F15E2119F58F0043A409 /* tutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F4F15C2119F58F0043A409 /* tutorialViewController.swift */; };
+		62F4F15F2119F58F0043A409 /* tutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F4F15D2119F58F0043A409 /* tutorialViewController.xib */; };
 		62F78875211058A3006077C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F78874211058A3006077C5 /* AppDelegate.swift */; };
 		62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62F7887B211058A3006077C5 /* FlipIt.xcdatamodeld */; };
 		62F7887F211058A4006077C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F7887E211058A4006077C5 /* Assets.xcassets */; };
@@ -24,8 +31,12 @@
 		62F7888D211058F9006077C5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F7888C211058F9006077C5 /* CoreMotion.framework */; };
 		62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7888E21105B83006077C5 /* MotionHandler.swift */; };
 		62F788B72110B752006077C5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F788B62110B752006077C5 /* AVFoundation.framework */; };
+<<<<<<< HEAD
 		A8AAE4A7211AE69D007F3BB2 /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AAE4A6211AE69D007F3BB2 /* MusicHelper.swift */; };
 		A8AAE4AA211AECD6007F3BB2 /* Beats-bongo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8AAE4A9211AECD6007F3BB2 /* Beats-bongo.mp3 */; };
+=======
+		C4198B0CC81BAE9298A727F7 /* libPods-FlipIt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C70D0A71A41FDB8918798C03 /* libPods-FlipIt.a */; };
+>>>>>>> d1178cb8ce708fb9c041e534468e4c3650e14f34
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +46,17 @@
 		62B686092116FC7C00A32203 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		62B686122117501C00A32203 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		62B686132117501C00A32203 /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
+		62C3613D211AED4C00305F1C /* CommandsTutorialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsTutorialCell.swift; sourceTree = "<group>"; };
+		62C3613E211AED4C00305F1C /* CommandsTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandsTutorialViewController.xib; sourceTree = "<group>"; };
+		62C3613F211AED4C00305F1C /* CommandsTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsTutorialViewController.swift; sourceTree = "<group>"; };
+		62C36140211AED4C00305F1C /* CommandsTutorialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandsTutorialCell.xib; sourceTree = "<group>"; };
 		62F22BD72111DFAA005F5CEE /* PossibleMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleMotions.swift; sourceTree = "<group>"; };
 		62F22BDC2111E4AA005F5CEE /* CommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHandler.swift; sourceTree = "<group>"; };
 		62F22BDE2111E612005F5CEE /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		62F22BDF2111E612005F5CEE /* StartPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartPageViewController.xib; sourceTree = "<group>"; };
+		62F499E52119D8560052747D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		62F4F15C2119F58F0043A409 /* tutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialViewController.swift; sourceTree = "<group>"; };
+		62F4F15D2119F58F0043A409 /* tutorialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = tutorialViewController.xib; sourceTree = "<group>"; };
 		62F78871211058A3006077C5 /* FlipIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F78874211058A3006077C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F7887C211058A3006077C5 /* FlipIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlipIt.xcdatamodel; sourceTree = "<group>"; };
@@ -49,8 +67,14 @@
 		62F7888C211058F9006077C5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		62F7888E21105B83006077C5 /* MotionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionHandler.swift; sourceTree = "<group>"; };
 		62F788B62110B752006077C5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+<<<<<<< HEAD
 		A8AAE4A6211AE69D007F3BB2 /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
 		A8AAE4A9211AECD6007F3BB2 /* Beats-bongo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Beats-bongo.mp3"; path = "../../../../../../Downloads/Beats-bongo.mp3"; sourceTree = "<group>"; };
+=======
+		6D82AAA6D39B3AA6158D0FE4 /* Pods-FlipIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt.release.xcconfig"; sourceTree = "<group>"; };
+		A2A51883A42EC87F33A4FA1A /* Pods-FlipIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt.debug.xcconfig"; sourceTree = "<group>"; };
+		C70D0A71A41FDB8918798C03 /* libPods-FlipIt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlipIt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> d1178cb8ce708fb9c041e534468e4c3650e14f34
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +84,43 @@
 			files = (
 				62F788B72110B752006077C5 /* AVFoundation.framework in Frameworks */,
 				62F7888D211058F9006077C5 /* CoreMotion.framework in Frameworks */,
+				C4198B0CC81BAE9298A727F7 /* libPods-FlipIt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		092C1C1AB5D050F7705DA55B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2A51883A42EC87F33A4FA1A /* Pods-FlipIt.debug.xcconfig */,
+				6D82AAA6D39B3AA6158D0FE4 /* Pods-FlipIt.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		62C3612A211ADBFE00305F1C /* Tutorial View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				62F4F15C2119F58F0043A409 /* tutorialViewController.swift */,
+				62F4F15D2119F58F0043A409 /* tutorialViewController.xib */,
+				62C3613C211AED4C00305F1C /* CommandsTutorial */,
+			);
+			path = "Tutorial View Controllers";
+			sourceTree = "<group>";
+		};
+		62C3613C211AED4C00305F1C /* CommandsTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				62C3613F211AED4C00305F1C /* CommandsTutorialViewController.swift */,
+				62C3613E211AED4C00305F1C /* CommandsTutorialViewController.xib */,
+				62C3613D211AED4C00305F1C /* CommandsTutorialCell.swift */,
+				62C36140211AED4C00305F1C /* CommandsTutorialCell.xib */,
+			);
+			path = CommandsTutorial;
+			sourceTree = "<group>";
+		};
 		62F22BD52111DF04005F5CEE /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +143,7 @@
 		62F22BD92111E0BD005F5CEE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				62C3612A211ADBFE00305F1C /* Tutorial View Controllers */,
 				62F22BDE2111E612005F5CEE /* StartPageViewController.swift */,
 				62F22BDF2111E612005F5CEE /* StartPageViewController.xib */,
 				62B686042116F3D300A32203 /* CountDownViewController.swift */,
@@ -106,6 +162,7 @@
 				62F78873211058A3006077C5 /* FlipIt */,
 				62F78872211058A3006077C5 /* Products */,
 				62F78889211058DE006077C5 /* Frameworks */,
+				092C1C1AB5D050F7705DA55B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,7 +177,11 @@
 		62F78873211058A3006077C5 /* FlipIt */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				A8AAE4A8211AECB6007F3BB2 /* Songs */,
+=======
+				62F499E52119D8560052747D /* Constants.swift */,
+>>>>>>> d1178cb8ce708fb9c041e534468e4c3650e14f34
 				62F22BD92111E0BD005F5CEE /* View */,
 				62F22BD62111DF85005F5CEE /* Interactor */,
 				62F22BD52111DF04005F5CEE /* Router */,
@@ -138,6 +199,7 @@
 				62F788B62110B752006077C5 /* AVFoundation.framework */,
 				62F7888C211058F9006077C5 /* CoreMotion.framework */,
 				62F7888A211058DE006077C5 /* CoreData.framework */,
+				C70D0A71A41FDB8918798C03 /* libPods-FlipIt.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,9 +219,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62F78886211058A4006077C5 /* Build configuration list for PBXNativeTarget "FlipIt" */;
 			buildPhases = (
+				B2D9C54607084834327713E0 /* [CP] Check Pods Manifest.lock */,
 				62F7886D211058A3006077C5 /* Sources */,
 				62F7886E211058A3006077C5 /* Frameworks */,
 				62F7886F211058A3006077C5 /* Resources */,
+				A31FBA2F5F5023A815AD066E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,9 +272,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				A8AAE4AA211AECD6007F3BB2 /* Beats-bongo.mp3 in Resources */,
+=======
+				62C36142211AED4C00305F1C /* CommandsTutorialViewController.xib in Resources */,
+				62C36144211AED4C00305F1C /* CommandsTutorialCell.xib in Resources */,
+>>>>>>> d1178cb8ce708fb9c041e534468e4c3650e14f34
 				62B686072116F3D300A32203 /* CountDownViewController.xib in Resources */,
 				62F78882211058A4006077C5 /* LaunchScreen.storyboard in Resources */,
+				62F4F15F2119F58F0043A409 /* tutorialViewController.xib in Resources */,
 				62F7887F211058A4006077C5 /* Assets.xcassets in Resources */,
 				62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */,
 				62B686152117501C00A32203 /* GameOverViewController.xib in Resources */,
@@ -219,6 +289,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A31FBA2F5F5023A815AD066E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Mute/Mute.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Mute.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2D9C54607084834327713E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlipIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		62F7886D211058A3006077C5 /* Sources */ = {
@@ -230,11 +339,18 @@
 				62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */,
 				62F22BDD2111E4AA005F5CEE /* CommandHandler.swift in Sources */,
 				62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */,
+<<<<<<< HEAD
 				A8AAE4A7211AE69D007F3BB2 /* MusicHelper.swift in Sources */,
+=======
+				62F499E62119D8560052747D /* Constants.swift in Sources */,
+				62C36143211AED4C00305F1C /* CommandsTutorialViewController.swift in Sources */,
+>>>>>>> d1178cb8ce708fb9c041e534468e4c3650e14f34
 				62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */,
 				62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */,
+				62F4F15E2119F58F0043A409 /* tutorialViewController.swift in Sources */,
 				62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */,
 				62B686062116F3D300A32203 /* CountDownViewController.swift in Sources */,
+				62C36141211AED4C00305F1C /* CommandsTutorialCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +484,7 @@
 		};
 		62F78887211058A4006077C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2A51883A42EC87F33A4FA1A /* Pods-FlipIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -387,6 +504,7 @@
 		};
 		62F78888211058A4006077C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D82AAA6D39B3AA6158D0FE4 /* Pods-FlipIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
