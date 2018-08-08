@@ -88,20 +88,21 @@ class CommandAndFeedbackHandler {
         MotionHandler.sharedInstance.stopDetecting()
         vibrate(motionValid: false)
         speak(text: "You lost. Hahahahaha!")
+        MusicHelper.sharedHelper.audioPlayer?.stop()
     }
     func initialize()  {
-        timeInterval = 3
-        oldTimeInterval = 3.0
+        timeInterval = Constants.defaultTimeInterval
+        oldTimeInterval = Constants.defaultTimeInterval
         
-        randomNumber = -1
-        numberOfCommandsGiven = 0
-        numberOfCommandsPerformedCorrectly = 0
+        randomNumber = Constants.defaultRandomNumber
+        numberOfCommandsGiven = Constants.defaultNumberOfCommandsGiven
+        numberOfCommandsPerformedCorrectly = Constants.defaultNumberOfCommandsPerformedCorrectly
         
-        score = 0
-        scoreIncrement = 1
-        level = 1
+        score = Constants.defaultScore
+        scoreIncrement = Constants.defaultScoreIncrement
+        level = Constants.defaultLevel
         
-        originalVolume = 0
+        originalVolume = Constants.defaultOriginalVolume
     }
     
     //MaARK:- Private Functions
@@ -141,9 +142,12 @@ class CommandAndFeedbackHandler {
             
             if device == 0 {
                 if motionValid {
-                   return
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 } else {
                     AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    }
                 }
             }
             
@@ -160,11 +164,17 @@ class CommandAndFeedbackHandler {
                     if #available(iOS 10,*) {
                         let generator = UINotificationFeedbackGenerator()
                         generator.notificationOccurred(.success)
+                    } else {
+                        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                     }
                 } else {
                     if #available( iOS 10, *) {
                         let generator = UINotificationFeedbackGenerator()
                         generator.notificationOccurred(.error)
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        }
                     }
                 }
             }
