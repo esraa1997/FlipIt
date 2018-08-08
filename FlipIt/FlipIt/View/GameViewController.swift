@@ -18,10 +18,10 @@ class GameViewController: UIViewController {
     @IBOutlet weak var commandLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let (_, commandText) = CommandHandler.sharedInstance.giveCommand()
+        let (_, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
         commandLabel.text = commandText
         
-        commandTimer = Timer.scheduledTimer(timeInterval: CommandHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
+        commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
 		MusicHelper.sharedHelper.playBackgroundMusic()
         // Do any additional setup after loading the view.
     }
@@ -30,28 +30,28 @@ class GameViewController: UIViewController {
     
     
     @objc func manageGame() {
-        let actionValid = CommandHandler.sharedInstance.validateCommand()
+        let actionValid = CommandAndFeedbackHandler.sharedInstance.validateCommand()
         if actionValid {
-            let (commandNumber, commandText) = CommandHandler.sharedInstance.giveCommand()
+            let (commandNumber, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
             commandLabel.text = commandText
-            if commandNumber == PossibleMotions.coverScreen.rawValue && CommandHandler.sharedInstance.timeInterval < 2 {
-                CommandHandler.sharedInstance.oldTimeInterval = CommandHandler.sharedInstance.timeInterval
-                CommandHandler.sharedInstance.timeInterval = 2.5
+            if commandNumber == PossibleMotions.coverScreen.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 2 {
+                CommandAndFeedbackHandler.sharedInstance.oldTimeInterval = CommandAndFeedbackHandler.sharedInstance.timeInterval
+                CommandAndFeedbackHandler.sharedInstance.timeInterval = 2.5
             }
         } else {
-            CommandHandler.sharedInstance.endGame()
+            CommandAndFeedbackHandler.sharedInstance.endGame()
             commandTimer.invalidate()
             let gameOverViewController = GameOverViewController()
             self.present(gameOverViewController, animated: false)
             return
         }
-        CommandHandler.sharedInstance.manageSpeedAndLevel()
+        CommandAndFeedbackHandler.sharedInstance.manageSpeedAndLevel()
 		
         
-        if CommandHandler.sharedInstance.randomNumber != -1 {
+        if CommandAndFeedbackHandler.sharedInstance.randomNumber != -1 {
             commandTimer.invalidate()
         }
-        commandTimer = Timer.scheduledTimer(timeInterval: CommandHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
+        commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
     }
     
 
