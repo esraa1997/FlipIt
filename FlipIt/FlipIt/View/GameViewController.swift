@@ -23,6 +23,7 @@ class GameViewController: UIViewController {
         self.becomeFirstResponder()
         MusicHelper.sharedHelper.playBackgroundMusic()
         CommandAndFeedbackHandler.sharedInstance.initialize()
+        MotionHandler.sharedInstance.initialize()
         let (_, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
         commandLabel.text = commandText
         

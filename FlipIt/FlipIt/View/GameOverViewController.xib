@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameOverViewController" customModule="FlipIt" customModuleProvider="target">
             <connections>
+                <outlet property="highScoreLabel" destination="vyd-vp-Req" id="kL9-bo-q51"/>
                 <outlet property="newHighScoreLabel" destination="RJE-2q-XJP" id="Jm2-Ic-qh7"/>
                 <outlet property="scoreLabel" destination="K9h-Yi-Qia" id="PQV-Zq-AVu"/>
                 <outlet property="startNewGame" destination="Zxg-ov-JGK" id="lk2-tG-pJ3"/>
@@ -46,23 +47,39 @@
                     <rect key="frame" x="75" y="557" width="225" height="57"/>
                     <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                    <state key="normal" title="New Game">
+                    <state key="normal" title="Main Menu">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="startNewGame:" destination="-1" eventType="touchUpInside" id="eHm-em-KeR"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-29-Kw1">
+                    <rect key="frame" x="108.5" y="37" width="158.5" height="37"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyd-vp-Req">
+                    <rect key="frame" x="162" y="82" width="50" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="K9h-Yi-Qia" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7fh-cd-dKd"/>
+                <constraint firstItem="vyd-vp-Req" firstAttribute="top" secondItem="LDi-29-Kw1" secondAttribute="bottom" constant="8" id="7z8-2f-raX"/>
                 <constraint firstItem="Jm9-MW-2Lb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HV9-Bq-UkP"/>
                 <constraint firstItem="Zxg-ov-JGK" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="JFd-Oe-LmN"/>
+                <constraint firstItem="LDi-29-Kw1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="KAo-xs-LBK"/>
                 <constraint firstItem="K9h-Yi-Qia" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="MOn-zL-b4x"/>
                 <constraint firstItem="Zxg-ov-JGK" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="Z0K-lo-CGR"/>
+                <constraint firstItem="LDi-29-Kw1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="17" id="cC6-UZ-WwU"/>
                 <constraint firstItem="RJE-2q-XJP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="exI-zY-Bfg"/>
                 <constraint firstItem="RJE-2q-XJP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fwt-0o-PqM"/>
+                <constraint firstItem="vyd-vp-Req" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="gSn-5k-aGQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zxg-ov-JGK" secondAttribute="bottom" constant="53" id="naM-Ym-Xga"/>
                 <constraint firstItem="K9h-Yi-Qia" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="pv8-lF-Kl7"/>
                 <constraint firstItem="K9h-Yi-Qia" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="qEx-p2-IkW"/>

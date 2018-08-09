@@ -17,6 +17,8 @@ class StartPageViewController: UIViewController {
     @IBOutlet weak var start: UIButton!
     @IBOutlet weak var options: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var highScoreImageView: UIImageView!
+    @IBOutlet weak var highScoreLabel: UILabel!
     
     //MARK:- IBActions
     @IBAction func start(_ sender: Any) {
@@ -32,45 +34,47 @@ class StartPageViewController: UIViewController {
         }
     }
     @IBAction func options(_ sender: Any) {
+        let optionsViewController = OptionsViewController()
+        self.navigationController?.pushViewController(optionsViewController, animated: true)
     }
     
     
     
     //MARK:- UI Standard Functions
     override func viewWillAppear(_ animated: Bool) {
-        
+
         //Start button:
-        start.frame = CGRect(x: view.frame.midX - view.frame.width * 0.25, y: view.frame.midY , width: view.frame.width * 0.5, height: view.frame.width * 0.5)
+        start.frame = CGRect(x: view.frame.midX - view.frame.width * 0.175, y: view.frame.maxY - start.frame.width * 0.55 - 50 - view.frame.width * 0.35, width: view.frame.width * 0.35, height: view.frame.width * 0.35)
         
         start.layer.cornerRadius = 0.5 * start.bounds.size.width
         start.clipsToBounds = true
         
-        //myscores button
+        //Options button
         options.frame = CGRect(x: start.frame.minX + 0.25 * start.frame.width , y: start.frame.maxY + 20 , width: start.frame.width * 0.55, height: start.frame.width * 0.55)
         options.layer.cornerRadius = 0.5 * options.bounds.size.width
         options.clipsToBounds = true
         options.layer.borderWidth = 2.0
         options.layer.borderColor = UIColor.white.cgColor
+        
+        self.navigationController?.isNavigationBarHidden = true
     }
     override func viewDidLoad() {
         Mute.shared.checkInterval = 0.5
         Mute.shared.alwaysNotify = true
         Mute.shared.notify = { [weak self] state in
             self?.isMuted = state
-            print ("muted")
             Mute.shared.isPaused = true
         }
-        
+        highScoreLabel.text = String(UserDefaults.standard.integer(forKey: "highScore"))
+        highScoreImageView.image = #imageLiteral(resourceName: "crown-1")
     }
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
     //MARK:- UI Functions
     func alertToMutedPhone() {
         let alert = UIAlertController(title: "It looks like your phone is on silent", message: "This game is so much more fun with the volume on", preferredStyle: UIAlertControllerStyle.alert)

@@ -13,28 +13,26 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var newHighScoreLabel: UILabel!
     @IBOutlet weak var startNewGame: UIButton!
+    @IBOutlet weak var highScoreLabel: UILabel!
     
     @IBAction func startNewGame(_ sender: Any) {
-        MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
-        CommandAndFeedbackHandler.sharedInstance.initialize()
-        MotionHandler.sharedInstance.initialize()
-        let countdownViewController = CountDownViewController()
-        self.present(countdownViewController,animated: true)
+        
+        let startPageViewController = StartPageViewController()
+        self.present(startPageViewController,animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //else
         newHighScoreLabel.isHidden = true
         let score = CommandAndFeedbackHandler.sharedInstance.score
         scoreLabel.text = String(score)
         let defaults = UserDefaults.standard
-        let highestScore =  defaults.integer(forKey: "highestScore")
-        if score > highestScore {
-            defaults.set(score, forKey: "highestScore")
+        let highScore =  defaults.integer(forKey: "highScore")
+        if score > highScore {
+            defaults.set(score, forKey: "highScore")
             newHighScoreLabel.isHidden = false
         }
+        highScoreLabel.text = String(highScore)
     }
 
     override func didReceiveMemoryWarning() {

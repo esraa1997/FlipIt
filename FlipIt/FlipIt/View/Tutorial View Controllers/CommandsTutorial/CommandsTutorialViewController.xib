@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fnp-K3-ItF">
-                    <rect key="frame" x="0.0" y="138" width="375" height="529"/>
+                    <rect key="frame" x="0.0" y="138" width="375" height="459"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="7cb-J2-J8i"/>
@@ -37,12 +37,29 @@
                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKP-bX-AWe">
+                    <rect key="frame" x="93.5" y="617" width="188" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="jXZ-35-uKr"/>
+                        <constraint firstAttribute="width" constant="188" id="mEb-hN-a2v"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Play">
+                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="startGame:" destination="-1" eventType="touchUpInside" id="0JM-Z9-kGf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="RKP-bX-AWe" firstAttribute="top" secondItem="Fnp-K3-ItF" secondAttribute="bottom" constant="20" id="0K5-Q5-jul"/>
+                <constraint firstItem="RKP-bX-AWe" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="B5A-Tb-neH"/>
                 <constraint firstItem="Fnp-K3-ItF" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ej1-t3-cXS"/>
                 <constraint firstItem="xqK-ZE-u5d" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1378" id="FLT-Ol-nJ4"/>
-                <constraint firstItem="Fnp-K3-ItF" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Iwa-dg-6Cz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RKP-bX-AWe" secondAttribute="bottom" constant="20" id="KCD-NJ-p3K"/>
                 <constraint firstItem="xqK-ZE-u5d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="TSF-vb-c67"/>
                 <constraint firstItem="xqK-ZE-u5d" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="aJR-Jc-IUB"/>
                 <constraint firstItem="Fnp-K3-ItF" firstAttribute="top" secondItem="xqK-ZE-u5d" secondAttribute="bottom" constant="6" id="aU2-ur-Icd"/>

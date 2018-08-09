@@ -13,6 +13,10 @@ class CommandsTutorialViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var label: UILabel!
     
+    @IBAction func startGame(_ sender: Any) {
+        let startPageViewController = StartPageViewController()
+        self.navigationController?.pushViewController(startPageViewController,animated: true)
+    }
     var commands = [String]()
     var descbribtions = [String]()
     var images = [UIImage]()
@@ -50,15 +54,27 @@ class CommandsTutorialViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommandsTutorialCell", for: indexPath) as! CommandsTutorialCell
         cell.selectionStyle = .none
         
-        //commandDiscribtionLabel
         cell.commandDiscribtionLabel.numberOfLines = 3
         cell.commandDiscribtionLabel.text = descbribtions[indexPath.item]
+        
         cell.commandNameLabel.text = commands[indexPath.item]
         
         //Image:
-        cell.commandImage.image = images[indexPath.item]
         
-
+        
+        cell.commandImage.image = images[indexPath.item]
+        switch commands[indexPath.item] {
+        case "Left":
+            cell.commandImage.layer.transform = CATransform3DMakeRotation(degree2radian(a: 80), -1.0, 1.0, 0.0)
+        case "Right":
+            cell.commandImage.layer.transform = CATransform3DMakeRotation(degree2radian(a: 80), 1.0, 1.0, 0.0)
+        case "Up" :
+            cell.commandImage.layer.transform = CATransform3DMakeRotation(degree2radian(a: 80), 0.0, -1.0, 0.0)
+        case "Down":
+            cell.commandImage.layer.transform = CATransform3DMakeRotation(degree2radian(a: 80), 0.0, 1.0, 0.0)
+        default:
+            cell.commandImage.layer.transform = CATransform3DMakeRotation(degree2radian(a: 0), 0.0, 0.0, 0.0)
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,4 +88,11 @@ class CommandsTutorialViewController: UIViewController, UITableViewDelegate, UIT
         tableView.delegate = self
 //        tableView.separatorStyle = .none
     }
+    
+    func degree2radian(a:CGFloat)->CGFloat {
+        let b = CGFloat(Double.pi) * a/180
+        return b
+        
+    }
+
 }

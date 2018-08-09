@@ -1,5 +1,5 @@
 //
-//  tutorialViewController.swift
+//  TutorialViewController.swift
 //  FlipIt
 //
 //  Created by Esraa Abdelmotteleb on 8/7/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class tutorialViewController: UIViewController {
+class TutorialViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     
     @IBAction func seeCommands(_ sender: Any) {
@@ -17,7 +17,7 @@ class tutorialViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Train Me"
+        self.title = "Game Description"
         instructionsLabel.text = "Flip It is a challenging concentration and speed game. When you hear or see a command on the screen, you have to perform it before the next command is given. \n\nThe commands will keep coming at you faster and faster and you will be getting more and more points."
         // Do any additional setup after loading the view.
     }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         
         //High score
-        let highScore = ["highestScore" : 0]
+        let highScore = ["highScore" : 0]
         defaults.register(defaults: highScore)
         
         //First time opening the game
@@ -32,17 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Navigation View Controller
         
         
-//        var firstTime =  defaults.bool(forKey: "firstTime")
-//        if firstTime {
-//            firstTime = false
-            let tutorialMainPage = tutorialViewController()
+        let firstTime =  defaults.bool(forKey: "firstTime")
+        if firstTime {
+            defaults.set(false, forKey: "firstTime")
+            let tutorialMainPage = TutorialViewController()
             let navigationViewController = UINavigationController(rootViewController: tutorialMainPage)
-//            window?.rootViewController = navigationViewController
-//        } else {
-//            let presenter = StartPageViewController(nibName: "StartPageViewController", bundle: nil)
-
             window?.rootViewController = navigationViewController
-//        }
+        } else {
+            let startPageViewController = StartPageViewController(nibName: "StartPageViewController", bundle: nil)
+            let optionsNavigationViewController = UINavigationController(rootViewController: startPageViewController)
+            window?.rootViewController = optionsNavigationViewController
+        }
         window?.makeKeyAndVisible()
         return true
     }

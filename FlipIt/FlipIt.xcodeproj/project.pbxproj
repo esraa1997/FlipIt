@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		317D55C3BFC9995F4E10E09F /* libPods-FlipIt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D022A3DF810C621433C9D4 /* libPods-FlipIt.a */; };
-		62739CF5211B2AB300D3C7BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62739CF4211B2AB300D3C7BD /* Constants.swift */; };
-		628773D4211B1B6F00218B66 /* tutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628773CD211B1B6F00218B66 /* tutorialViewController.swift */; };
-		628773D5211B1B6F00218B66 /* tutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628773CE211B1B6F00218B66 /* tutorialViewController.xib */; };
+		62739CF7211C2B8C00D3C7BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62739CF6211C2B8B00D3C7BD /* Constants.swift */; };
+		62739CFA211C314B00D3C7BD /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62739CF8211C314B00D3C7BD /* OptionsViewController.swift */; };
+		62739CFB211C314B00D3C7BD /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62739CF9211C314B00D3C7BD /* OptionsViewController.xib */; };
+		628773D4211B1B6F00218B66 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628773CD211B1B6F00218B66 /* TutorialViewController.swift */; };
+		628773D5211B1B6F00218B66 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628773CE211B1B6F00218B66 /* TutorialViewController.xib */; };
 		628773D6211B1B6F00218B66 /* CommandsTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628773D0211B1B6F00218B66 /* CommandsTutorialViewController.xib */; };
 		628773D7211B1B6F00218B66 /* CommandsTutorialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628773D1211B1B6F00218B66 /* CommandsTutorialCell.xib */; };
 		628773D8211B1B6F00218B66 /* CommandsTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628773D2211B1B6F00218B66 /* CommandsTutorialCell.swift */; };
@@ -38,9 +40,11 @@
 
 /* Begin PBXFileReference section */
 		0E6C41124AC7527BAE6151F2 /* Pods-FlipIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlipIt/Pods-FlipIt.debug.xcconfig"; sourceTree = "<group>"; };
-		62739CF4211B2AB300D3C7BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
-		628773CD211B1B6F00218B66 /* tutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorialViewController.swift; sourceTree = "<group>"; };
-		628773CE211B1B6F00218B66 /* tutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tutorialViewController.xib; sourceTree = "<group>"; };
+		62739CF6211C2B8B00D3C7BD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../../.Trash/Constants.swift; sourceTree = "<group>"; };
+		62739CF8211C314B00D3C7BD /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		62739CF9211C314B00D3C7BD /* OptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
+		628773CD211B1B6F00218B66 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		628773CE211B1B6F00218B66 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
 		628773D0211B1B6F00218B66 /* CommandsTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandsTutorialViewController.xib; sourceTree = "<group>"; };
 		628773D1211B1B6F00218B66 /* CommandsTutorialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandsTutorialCell.xib; sourceTree = "<group>"; };
 		628773D2211B1B6F00218B66 /* CommandsTutorialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsTutorialCell.swift; sourceTree = "<group>"; };
@@ -88,8 +92,8 @@
 		628773CC211B1B6F00218B66 /* Tutorial View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				628773CD211B1B6F00218B66 /* tutorialViewController.swift */,
-				628773CE211B1B6F00218B66 /* tutorialViewController.xib */,
+				628773CD211B1B6F00218B66 /* TutorialViewController.swift */,
+				628773CE211B1B6F00218B66 /* TutorialViewController.xib */,
 				628773CF211B1B6F00218B66 /* CommandsTutorial */,
 			);
 			path = "Tutorial View Controllers";
@@ -145,6 +149,8 @@
 				62B686092116FC7C00A32203 /* GameViewController.xib */,
 				62B686122117501C00A32203 /* GameOverViewController.swift */,
 				62B686132117501C00A32203 /* GameOverViewController.xib */,
+				62739CF8211C314B00D3C7BD /* OptionsViewController.swift */,
+				62739CF9211C314B00D3C7BD /* OptionsViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,7 +176,7 @@
 		62F78873211058A3006077C5 /* FlipIt */ = {
 			isa = PBXGroup;
 			children = (
-				62739CF4211B2AB300D3C7BD /* Constants.swift */,
+				62739CF6211C2B8B00D3C7BD /* Constants.swift */,
 				628773DC211B213C00218B66 /* Songs */,
 				62F22BD92111E0BD005F5CEE /* View */,
 				62F22BD62111DF85005F5CEE /* Interactor */,
@@ -271,8 +277,9 @@
 				62F7887F211058A4006077C5 /* Assets.xcassets in Resources */,
 				62F22BE12111E612005F5CEE /* StartPageViewController.xib in Resources */,
 				62B686152117501C00A32203 /* GameOverViewController.xib in Resources */,
-				628773D5211B1B6F00218B66 /* tutorialViewController.xib in Resources */,
+				628773D5211B1B6F00218B66 /* TutorialViewController.xib in Resources */,
 				62B6860B2116FC7C00A32203 /* GameViewController.xib in Resources */,
+				62739CFB211C314B00D3C7BD /* OptionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,13 +334,14 @@
 				62F22BD82111DFAA005F5CEE /* PossibleMotions.swift in Sources */,
 				628773D8211B1B6F00218B66 /* CommandsTutorialCell.swift in Sources */,
 				62F22BDD2111E4AA005F5CEE /* CommandAndFeedbackHandler.swift in Sources */,
+				62739CF7211C2B8C00D3C7BD /* Constants.swift in Sources */,
 				62F22BE02111E612005F5CEE /* StartPageViewController.swift in Sources */,
 				628773D9211B1B6F00218B66 /* CommandsTutorialViewController.swift in Sources */,
 				A8AAE4A7211AE69D007F3BB2 /* MusicHelper.swift in Sources */,
+				62739CFA211C314B00D3C7BD /* OptionsViewController.swift in Sources */,
 				62B6860A2116FC7C00A32203 /* GameViewController.swift in Sources */,
 				62F7888F21105B83006077C5 /* MotionHandler.swift in Sources */,
-				628773D4211B1B6F00218B66 /* tutorialViewController.swift in Sources */,
-				62739CF5211B2AB300D3C7BD /* Constants.swift in Sources */,
+				628773D4211B1B6F00218B66 /* TutorialViewController.swift in Sources */,
 				62F7887D211058A3006077C5 /* FlipIt.xcdatamodeld in Sources */,
 				62B686062116F3D300A32203 /* CountDownViewController.swift in Sources */,
 			);
