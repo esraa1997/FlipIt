@@ -98,10 +98,10 @@
 		628773CF211B1B6F00218B66 /* CommandsTutorial */ = {
 			isa = PBXGroup;
 			children = (
-				628773D0211B1B6F00218B66 /* CommandsTutorialViewController.xib */,
-				628773D1211B1B6F00218B66 /* CommandsTutorialCell.xib */,
-				628773D2211B1B6F00218B66 /* CommandsTutorialCell.swift */,
 				628773D3211B1B6F00218B66 /* CommandsTutorialViewController.swift */,
+				628773D0211B1B6F00218B66 /* CommandsTutorialViewController.xib */,
+				628773D2211B1B6F00218B66 /* CommandsTutorialCell.swift */,
+				628773D1211B1B6F00218B66 /* CommandsTutorialCell.xib */,
 			);
 			path = CommandsTutorial;
 			sourceTree = "<group>";

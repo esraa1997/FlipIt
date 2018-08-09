@@ -17,7 +17,7 @@ enum PossibleMotions: Int {
     case pressVolume = 6
     case shake = 7
     
-    var motions: String {
+    var motionName: String {
         switch self {
         case .faceLeft:
             return "Left"
@@ -38,6 +38,29 @@ enum PossibleMotions: Int {
         default:
             return "no Motion"
             
+        }
+    }
+    
+    var motionDescribtion: String {
+        switch self {
+        case .faceLeft:
+            return "Make your phone lie horizontally (as in landscape mode) with the screen facing left."
+        case .faceRight:
+            return "Make your phone lie horizontally (as in landscape mode) with the screen facing right."
+        case .turnTowardsFace:
+            return "Make your phone stand vertically (as in portrait mode) with the screen facing left "
+        case .coverScreen:
+            return "Cover your phone's screen. Make sure that the proximity sensor (circled in red) is covered"
+        case .faceUp:
+            return "Make the screen face upwards"
+        case .faceDown:
+            return "Make the screen face downwards"
+        case.pressVolume:
+            return "Press either of the volume buttons"
+        case .shake:
+            return "Shake your phone quickly then stop before the next command is given"
+        default:
+            return "no Motion"
         }
     }
 }

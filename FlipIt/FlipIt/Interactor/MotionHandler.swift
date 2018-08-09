@@ -22,10 +22,12 @@ class MotionHandler: UIViewController {
     var motionManager = CMMotionManager()
     
     var possibleMotion: PossibleMotions? = .none
-    var motion: String {
-        return possibleMotion!.motions
+    var motionName: String {
+        return possibleMotion!.motionName
     }
-    
+    var motionDescribtion: String {
+        return possibleMotion!.motionDescribtion
+    }
     var numberOfPossibleMotions = 8 //TODO: change it as Sandra adds her stuff
     var motionsPerformed = [0,0,0,0]
     
@@ -129,7 +131,7 @@ class MotionHandler: UIViewController {
         }
     }
     private func manageVolumeSliderView(setVolume: Bool, newVolume: Float) {
-        let volumeView = MPVolumeView(frame: CGRect.init(x: self.view.frame.maxX, y: self.view.frame.maxY, width: 0, height: 0)).subviews.first { (aView) -> Bool in
+        let volumeView = MPVolumeView().subviews.first { (aView) -> Bool in
             return NSStringFromClass(aView.classForCoder) == "MPVolumeSlider" ? true : false
             } as? UISlider
         guard volumeView != nil else { return }
@@ -149,6 +151,13 @@ class MotionHandler: UIViewController {
         } else if originalVolume == 0 {
             self.manageVolumeSliderView(setVolume: true, newVolume: 0.125)
         }
+    }
+    private func countCommands() {
+        var count = 0
+        while PossibleMotions(rawValue: count) != nil {
+            count += 1
+        }
+        numberOfPossibleMotions = count
     }
 }
 

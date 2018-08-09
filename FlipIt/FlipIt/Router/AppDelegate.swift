@@ -35,12 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        var firstTime =  defaults.bool(forKey: "firstTime")
 //        if firstTime {
 //            firstTime = false
-//            let tutorialMainPage = tutorialViewController()
-//            let navigationViewController = UINavigationController(rootViewController: tutorialMainPage)
+            let tutorialMainPage = tutorialViewController()
+            let navigationViewController = UINavigationController(rootViewController: tutorialMainPage)
 //            window?.rootViewController = navigationViewController
 //        } else {
-            let presenter = StartPageViewController(nibName: "StartPageViewController", bundle: nil)
-            window?.rootViewController = presenter
+//            let presenter = StartPageViewController(nibName: "StartPageViewController", bundle: nil)
+
+            window?.rootViewController = navigationViewController
 //        }
         window?.makeKeyAndVisible()
         return true
