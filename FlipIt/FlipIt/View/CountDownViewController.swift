@@ -20,6 +20,8 @@ class CountDownViewController: UIViewController {
     
     //MARK:- Stadards functions
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = true
+        
         hideVolumeView()
         super.viewDidLoad()
         countdownLabel.text = String(counter)
@@ -40,7 +42,7 @@ class CountDownViewController: UIViewController {
         } else {
             countdownTimer.invalidate()
             let gameViewController = GameViewController()
-            self.present(gameViewController, animated: false)
+            self.navigationController?.pushViewController(gameViewController, animated: false)
         }
     }
     

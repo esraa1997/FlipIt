@@ -13,6 +13,7 @@ class StartPageViewController: UIViewController {
     //MARK:- Variables
     static let sharedInstance = StartPageViewController()
     var isMuted = false
+    
     //MARK:- IBOutlets
     @IBOutlet weak var start: UIButton!
     @IBOutlet weak var options: UIButton!
@@ -25,12 +26,10 @@ class StartPageViewController: UIViewController {
         let isMuted = Mute.shared.isMute
         if isMuted {
             alertToMutedPhone()
-            
         } else {
             MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
             let countDownViewController = CountDownViewController()
-            self.present(countDownViewController, animated: false)
-            
+            self.navigationController?.pushViewController(countDownViewController, animated: false)
         }
     }
     @IBAction func options(_ sender: Any) {
@@ -38,14 +37,11 @@ class StartPageViewController: UIViewController {
         self.navigationController?.pushViewController(optionsViewController, animated: true)
     }
     
-    
-    
     //MARK:- UI Standard Functions
     override func viewWillAppear(_ animated: Bool) {
 
         //Start button:
         start.frame = CGRect(x: view.frame.midX - view.frame.width * 0.175, y: view.frame.maxY - start.frame.width * 0.55 - 50 - view.frame.width * 0.35, width: view.frame.width * 0.35, height: view.frame.width * 0.35)
-        
         start.layer.cornerRadius = 0.5 * start.bounds.size.width
         start.clipsToBounds = true
         
@@ -56,6 +52,8 @@ class StartPageViewController: UIViewController {
         options.layer.borderWidth = 2.0
         options.layer.borderColor = UIColor.white.cgColor
         
+        //Others
+        highScoreLabel.text = String(UserDefaults.standard.integer(forKey: "highScore"))
         self.navigationController?.isNavigationBarHidden = true
     }
     override func viewDidLoad() {
@@ -65,16 +63,13 @@ class StartPageViewController: UIViewController {
             self?.isMuted = state
             Mute.shared.isPaused = true
         }
-        highScoreLabel.text = String(UserDefaults.standard.integer(forKey: "highScore"))
         highScoreImageView.image = #imageLiteral(resourceName: "crown-1")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
-    }
+
     //MARK:- UI Functions
     func alertToMutedPhone() {
         let alert = UIAlertController(title: "It looks like your phone is on silent", message: "This game is so much more fun with the volume on", preferredStyle: UIAlertControllerStyle.alert)
@@ -84,24 +79,17 @@ class StartPageViewController: UIViewController {
             
             MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
             let countDownViewController = CountDownViewController()
-            self.present(countDownViewController, animated: false)
+            self.navigationController?.pushViewController(countDownViewController, animated: false)
             
         }))
         alert.addAction(UIAlertAction(title: "I want to keep it muted", style: UIAlertActionStyle.default, handler: { _ in
             alert.dismiss(animated: true, completion: nil)
             MotionHandler.sharedInstance.startDetection(updateInterval: 0.1, proximitySensorEnabled: true)
             let countDownViewController = CountDownViewController()
-            self.present(countDownViewController, animated: false)
+            self.navigationController?.pushViewController(countDownViewController, animated: false)
             
         }))
-        
+
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-//TODO:
-// proximity sensor disabled after game is over
-// volume listener disabled after game is over
-// Vibration
-
-

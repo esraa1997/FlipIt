@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
     
     //MARK:- Standard UI functions
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = true
         super.viewDidLoad()
         hideVolumeView()
         self.becomeFirstResponder()
@@ -69,7 +70,7 @@ class GameViewController: UIViewController {
             CommandAndFeedbackHandler.sharedInstance.endGame()
             commandTimer.invalidate()
             let gameOverViewController = GameOverViewController()
-            self.present(gameOverViewController, animated: false)
+            self.navigationController?.pushViewController(gameOverViewController, animated: false)
             return
         }
         if CommandAndFeedbackHandler.sharedInstance.randomNumber != -1 {

@@ -18,10 +18,11 @@ class GameOverViewController: UIViewController {
     @IBAction func startNewGame(_ sender: Any) {
         
         let startPageViewController = StartPageViewController()
-        self.present(startPageViewController,animated: true)
+        self.navigationController?.pushViewController(startPageViewController,animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         
         newHighScoreLabel.isHidden = true
         let score = CommandAndFeedbackHandler.sharedInstance.score
@@ -32,7 +33,7 @@ class GameOverViewController: UIViewController {
             defaults.set(score, forKey: "highScore")
             newHighScoreLabel.isHidden = false
         }
-        highScoreLabel.text = String(highScore)
+        highScoreLabel.text = String(defaults.integer(forKey: "highScore"))
     }
 
     override func didReceiveMemoryWarning() {
