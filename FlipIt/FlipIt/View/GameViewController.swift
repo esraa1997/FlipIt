@@ -25,10 +25,8 @@ class GameViewController: UIViewController {
         CommandAndFeedbackHandler.sharedInstance.initialize()
         MotionHandler.sharedInstance.initialize()
         let (_, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
-        commandLabel.text = commandText
-        
+		self.commandLabel.text = commandText
         commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
-        
         
     }
     
@@ -48,10 +46,15 @@ class GameViewController: UIViewController {
     
     //MARK:- UI Functions
     @objc func manageGame() {
+	
         let actionValid = CommandAndFeedbackHandler.sharedInstance.validateCommand()
         if actionValid {
             let (commandNumber, commandText) = CommandAndFeedbackHandler.sharedInstance.giveCommand()
-            commandLabel.text = commandText
+			commandLabel.text = ""
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+				self.commandLabel.text = commandText
+			}
+			
             if commandNumber == PossibleMotions.coverScreen.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 2.0 {
                 CommandAndFeedbackHandler.sharedInstance.oldTimeInterval = CommandAndFeedbackHandler.sharedInstance.timeInterval
                 CommandAndFeedbackHandler.sharedInstance.timeInterval = 2.5
@@ -59,7 +62,9 @@ class GameViewController: UIViewController {
             if commandNumber == PossibleMotions.shake.rawValue && CommandAndFeedbackHandler.sharedInstance.timeInterval < 1.5 {
                 CommandAndFeedbackHandler.sharedInstance.oldTimeInterval = CommandAndFeedbackHandler.sharedInstance.timeInterval
                 CommandAndFeedbackHandler.sharedInstance.timeInterval = 1.5
+			
             }
+			
         } else {
             CommandAndFeedbackHandler.sharedInstance.endGame()
             commandTimer.invalidate()
@@ -70,6 +75,7 @@ class GameViewController: UIViewController {
         if CommandAndFeedbackHandler.sharedInstance.randomNumber != -1 {
             commandTimer.invalidate()
         }
+		
         commandTimer = Timer.scheduledTimer(timeInterval: CommandAndFeedbackHandler.sharedInstance.timeInterval, target: self, selector: #selector(manageGame), userInfo: nil, repeats: true)
     }
     
